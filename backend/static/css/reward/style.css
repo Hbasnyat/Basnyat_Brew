@@ -1,0 +1,280 @@
+.Hero-section .topbar {
+    position: initial;
+  }
+  .Hero-section .topbar .navWrapper {
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  .Hero-section .topbar .navWrapper .navbar .logo img {
+    filter: invert(1);
+  }
+  .Hero-section .topbar .navWrapper .navbar .navigationWrapper ul li a {
+    color: #363636;
+  }
+  .Hero-section .topbar .navWrapper .navbar .navigationWrapper ul li a:after {
+    background-color: #363636;
+  }
+  .Hero-section .topbar .navWrapper .navbar .navigationWrapper ul li:first-child a::after {
+    transform: scaleX(0);
+  }
+  .Hero-section .topbar .navWrapper .navbar .navigationWrapper ul li:hover:first-child a::after {
+    transform: scaleX(1);
+  }
+  .Hero-section .topbar .navWrapper .navbar .navigationWrapper ul li:nth-child(3) a::after {
+    transform: scaleX(1);
+  }
+  .Hero-section .topbar .navWrapper .navbar .cart-menuWrapper ul li img {
+    filter: invert(1);
+  }
+  .Hero-section .topbar .navWrapper .navbar .cart-menuWrapper ul li .nav-icon1 span {
+    background-color: #363636;
+  }
+  .Hero-section .topbar .navWrapper .navbar .cart-menuWrapper ul li .nav-icon2 span {
+    background-color: #363636 !important;
+  }
+  .Hero-section .topbar .navWrapper .navbar .cart-menuWrapper ul .searchIcon a {
+    color: #363636;
+    font-weight: 600;
+  }
+  .Hero-section .topbar .navWrapper .navbar .cart-menuWrapper ul .searchIcon a::after {
+    background-color: #363636;
+  }
+  .Hero-section .topbar .navWrapper .navbar .cart-menuWrapper ul .searchIcon a:hover ::after {
+    transform: scale(1);
+  }
+  
+  .rewardbanner .rewardslider .links ul {
+    display: flex;
+    gap: 16px;
+    align-items: center;
+  }
+  .rewardbanner .rewardslider .links ul li a img {
+    filter: invert(1);
+    opacity: 0.7;
+  }
+  .rewardbanner .rewardslider .banner1 {
+    position: relative;
+  }
+  .rewardbanner .rewardslider .banner1 .bannertext {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    gap: 16px;
+    position: absolute;
+    left: 8%;
+    top: 25%;
+    width: 43%;
+  }
+  .rewardbanner .rewardslider .banner1 .bannertext .freetext {
+    font-family: var(--secondary-font);
+    padding: 8px 15px;
+    border: 1px solid #676767;
+    text-transform: uppercase;
+    font-weight: 600;
+    letter-spacing: 1px;
+  }
+  .rewardbanner .rewardslider .banner1 .bannertext p {
+    font-family: "Just Me Again Down Here", cursive;
+    font-weight: 400;
+    text-transform: uppercase;
+    font-size: 24px;
+    letter-spacing: 1px;
+  }
+  .rewardbanner .rewardslider .banner1 .bannertext h2 {
+    color: #363636;
+    letter-spacing: 2px;
+    line-height: 40px;
+    text-align: center;
+  }
+  .rewardbanner .rewardslider .banner1 .bannertext h2::after {
+    display: none;
+  }
+  .rewardbanner .rewardslider .banner1 .bannertext h2 re {
+    color: var(--primary-color);
+  }
+  .rewardbanner .rewardslider .banner2 {
+    position: relative;
+  }
+  .rewardbanner .rewardslider .banner2 img {
+    height: 100%;
+    -o-object-fit: cover;
+       object-fit: cover;
+  }
+  .rewardbanner .rewardslider .banner2 .bannertext {
+    position: absolute;
+    right: 4%;
+    top: 30%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 24px;
+    width: 43%;
+  }
+  .rewardbanner .rewardslider .banner2 .bannertext h2 {
+    font-size: 36px;
+    color: #363636;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .rewardbanner .rewardslider .banner2 .bannertext h2::after {
+    display: none;
+  }
+  .rewardbanner .rewardslider .banner2 .bannertext h2 re {
+    color: var(--primary-color);
+  }
+  .rewardbanner .rewardslider .banner2 .bannertext h2 span {
+    color: var(--primary-color);
+  }
+  .rewardbanner .rewardslider .banner2 .bannertext p {
+    font-size: 16px;
+    text-align: center;
+    font-weight: 500;
+  }
+  .rewardbanner .rewardslider .slick-arrow {
+    display: none !important;
+  }
+  
+  .process .processwrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .process .processwrapper h2 {
+    font-size: 24px;
+    color: #363636;
+    margin: 32px 0;
+    color: var(--primary-color);
+  }
+  .process .processwrapper .orderBtn {
+    margin-top: 32px;
+  }
+  .process .processwrapper .rewardprocesswrapper {
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
+  }
+  .process .processwrapper .rewardprocesswrapper .p-1 {
+    display: flex;
+    gap: 16px;
+  }
+  .process .processwrapper .rewardprocesswrapper .p-1 span {
+    height: -moz-fit-content;
+    height: fit-content;
+    font-size: 48px;
+    color: var(--primary-color);
+    font-family: var(--primary-font);
+    font-weight: 600;
+    position: relative;
+  }
+  .process .processwrapper .rewardprocesswrapper .p-1 span:after {
+    content: "";
+    width: 50%;
+    left: 2px;
+    bottom: 0;
+    background-color: var(--primary-color);
+    height: 2px;
+    position: absolute;
+  }
+  .process .processwrapper .rewardprocesswrapper .p-1 .processtext {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 10px;
+  }
+  .process .processwrapper .rewardprocesswrapper .p-1 .processtext h3 {
+    font-size: 20px;
+    font-family: var(--primary-font);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-weight: 600;
+  }
+  .process .processwrapper .rewardprocesswrapper .p-1 .processtext p {
+    font-size: 15px;
+    text-transform: capitalize;
+    font-weight: 500;
+    width: 282px;
+  }
+  
+  @media only screen and (max-width: 1200px) {
+    .process .processwrapper .rewardprocesswrapper .p-1 span {
+      font-size: 28px !important;
+    }
+    .process .processwrapper .rewardprocesswrapper .p-1 .processtext {
+      margin: 0;
+    }
+    .process .processwrapper .rewardprocesswrapper .p-1 .processtext h3 {
+      margin: 0;
+    }
+    .process .processwrapper .rewardprocesswrapper {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      grid-gap: 20px;
+    }
+    .process .processwrapper .rewardprocesswrapper .p-1 .processtext p {
+      width: -moz-fit-content;
+      width: fit-content;
+    }
+    .rewardbanner .rewardslider .banner2 .bannertext {
+      text-align: center;
+    }
+    .rewardbanner .rewardslider .banner2 .bannertext p {
+      font-size: 16px;
+    }
+    .rewardbanner .rewardslider .banner2 .bannertext h2 {
+      width: 101%;
+    }
+  }
+  @media only screen and (max-width: 1050px) {
+    .bannertext h2 {
+      font-size: 24px !important;
+      width: 120%;
+    }
+  }
+  @media only screen and (max-width: 800px) {
+    .bannertext {
+      gap: 12px !important;
+    }
+    .bannertext h2 {
+      line-height: normal !important;
+    }
+    .bannertext .orderBtn {
+      height: 40px;
+      width: 140px;
+    }
+    .bannertext .orderBtn a {
+      font-size: 13px;
+    }
+    .banner2 p {
+      width: 100% !important;
+    }
+  }
+  @media only screen and (max-width: 650px) {
+    h2 {
+      font-size: 24px !important;
+    }
+    .bannertext span {
+      font-size: 11px !important;
+    }
+    .bannertext h2 {
+      font-size: 20px !important;
+    }
+    .bannertext p {
+      font-size: 13px !important;
+    }
+  }
+  @media only screen and (max-width: 500px) {
+    .bannertext {
+      top: 10% !important;
+      width: 50% !important;
+    }
+    .bannertext h2 {
+      font-size: 18px !important;
+    }
+    .bannertext .orderBtn {
+      height: 36px;
+      width: 116px;
+    }
+    .rewardbanner .rewardslider .links ul {
+      display: none;
+    }
+  }/*# sourceMappingURL=style.css.map */

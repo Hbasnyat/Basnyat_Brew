@@ -1,0 +1,249 @@
+@charset "UTF-8";
+.Hero-section .topbar {
+  position: initial;
+}
+.Hero-section .topbar .navWrapper {
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+.Hero-section .topbar .navWrapper .navbar .logo img {
+  filter: invert(1);
+}
+.Hero-section .topbar .navWrapper .navbar .navigationWrapper ul li a {
+  color: #363636;
+}
+.Hero-section .topbar .navWrapper .navbar .navigationWrapper ul li a:after {
+  background-color: #363636;
+}
+.Hero-section .topbar .navWrapper .navbar .navigationWrapper ul li:first-child a::after {
+  transform: scaleX(0);
+}
+.Hero-section .topbar .navWrapper .navbar .navigationWrapper ul li:hover:first-child a::after {
+  transform: scaleX(1);
+}
+.Hero-section .topbar .navWrapper .navbar .cart-menuWrapper ul li img {
+  filter: invert(1);
+}
+.Hero-section .topbar .navWrapper .navbar .cart-menuWrapper ul li .nav-icon1 span {
+  background-color: #363636;
+}
+.Hero-section .topbar .navWrapper .navbar .cart-menuWrapper ul li .nav-icon2 span{
+  background-color: #363636 !important;
+}
+.Hero-section .topbar .navWrapper .navbar .cart-menuWrapper ul .searchIcon a {
+  color: #363636;
+  font-weight: 600;
+}
+.Hero-section .topbar .navWrapper .navbar .cart-menuWrapper ul .searchIcon a::after {
+  background-color: #363636;
+  transform: scale(1);
+}
+
+.useraccount .createaccountwrapper {
+  width: 436px;
+  margin: 48px auto;
+  background: #fff;
+  padding: 32px;
+  border-radius: 16px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+.useraccount .createaccountwrapper h2 {
+  font-size: 24px;
+  text-transform: initial;
+  letter-spacing: 1.5px;
+  text-align: center;
+  width: initial;
+}
+.useraccount .createaccountwrapper h2::after {
+  display: none;
+}
+.useraccount .createaccountwrapper p {
+  font-size: 15px;
+  width: 80%;
+  margin: 0 auto;
+  text-align: center;
+  margin-top: 8px;
+}
+.useraccount .createaccountwrapper label {
+  margin-left: 21px;
+}
+.useraccount .createaccountwrapper #password {
+  margin-top: 18px;
+}
+.useraccount .createaccountwrapper #email, .useraccount .createaccountwrapper #password {
+  width: 86%;
+  height: 42px;
+  padding-left: 16px;
+  font-family: var(--secondary-font);
+  font-size: 16px;
+  letter-spacing: 1px;
+  color: #363636;
+  margin-top: 16px;
+  border: none;
+  border: 1.5px solid #949494;
+}
+.useraccount .createaccountwrapper #email:focus, .useraccount .createaccountwrapper #password:focus {
+  outline: none;
+}
+.useraccount .createaccountwrapper #password {
+  width: 95% !important;
+  margin: 0;
+}
+.useraccount .createaccountwrapper .input-eye {
+  margin-left: 21px;
+  width: 90%;
+  position: relative;
+  margin-top: 16px;
+}
+.useraccount .createaccountwrapper .input-eye .eye-icon {
+  position: absolute;
+  right: 8px;
+  top: 50%;
+  transform: translate(0, -50%);
+}
+.useraccount .createaccountwrapper .error {
+  margin-left: 36px;
+  font-family: var(--secondary-font);
+  font-size: 15px;
+  letter-spacing: 1px;
+  color: #ff0404;
+}
+.useraccount .createaccountwrapper .orderBtn {
+  width: 90%;
+  margin: 0 auto;
+  margin-top: 32px;
+}
+.useraccount .createaccountwrapper .orderBtn a {
+  text-transform: none;
+  font-size: 16px;
+}
+.useraccount .createaccountwrapper .signin-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.useraccount .createaccountwrapper .signin-wrapper .or {
+  width: 100%;
+  position: relative;
+  text-align: center;
+  margin: 16px 0;
+  font-family: var(--secondary-font);
+  letter-spacing: 1px;
+}
+.useraccount .createaccountwrapper .signin-wrapper .or::before {
+  content: "";
+  height: 1px;
+  width: 30%;
+  position: absolute;
+  left: 60px;
+  top: 50%;
+  background-color: #898989;
+}
+.useraccount .createaccountwrapper .signin-wrapper .or:after {
+  content: "";
+  height: 1px;
+  width: 30%;
+  position: absolute;
+  right: 60px;
+  top: 50%;
+  background-color: #898989;
+}
+.useraccount .createaccountwrapper .signin-wrapper .easysignin {
+  display: flex;
+  width: 91%;
+  justify-content: space-between;
+}
+.useraccount .createaccountwrapper .signin-wrapper .easysignin .g-signin, .useraccount .createaccountwrapper .signin-wrapper .easysignin .a-signin {
+  color: #363636;
+  padding: 7px 15px;
+  border: 1px solid #B8B8B8;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  transition: 0.2s all;
+}
+.useraccount .createaccountwrapper .signin-wrapper .easysignin .g-signin span, .useraccount .createaccountwrapper .signin-wrapper .easysignin .a-signin span {
+  font-family: var(--secondary-font);
+  font-size: 14px;
+  letter-spacing: 1px;
+  font-weight: 600;
+}
+.useraccount .createaccountwrapper .signin-wrapper .easysignin .g-signin:hover, .useraccount .createaccountwrapper .signin-wrapper .easysignin .a-signin:hover {
+  background-color: #f3f3f3;
+}
+.useraccount .createaccountwrapper .keepforgotwrapper {
+  width: 90%;
+  display: flex;
+  justify-content: space-between;
+  margin: 0 auto;
+  margin-top: 18px;
+}
+.useraccount .createaccountwrapper .keepforgotwrapper .keep {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  /* Style the custom checkbox */
+  /* Style the label */
+}
+.useraccount .createaccountwrapper .keepforgotwrapper .keep input[type=checkbox] {
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  width: 20px;
+  height: 20px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  outline: none;
+  cursor: pointer;
+}
+.useraccount .createaccountwrapper .keepforgotwrapper .keep input[type=checkbox]:checked::before {
+  content: "✓"; /* Checkmark character */
+  display: block;
+  width: 20px;
+  height: 20px;
+  text-align: center;
+  line-height: 20px;
+  background-color: var(--primary-color); /* Color when checked */
+  color: white;
+  border-radius: 4px;
+  outline: none;
+}
+.useraccount .createaccountwrapper .keepforgotwrapper .keep label {
+  display: inline-block;
+  margin-left: 5px;
+  vertical-align: middle;
+}
+.useraccount .createaccountwrapper .keepforgotwrapper .keep label {
+  font-family: var(--secondary-font);
+  letter-spacing: 1px;
+}
+.useraccount .createaccountwrapper .keepforgotwrapper .forgot a, .useraccount .createaccountwrapper .sign-up a {
+  color: var(--primary-color);
+  font-weight: 600;
+  letter-spacing: 1px;
+}
+.useraccount .createaccountwrapper .keepforgotwrapper .forgot a:hover , .useraccount .createaccountwrapper .sign-up a:hover{
+  text-decoration: underline;
+}
+
+@media only screen and (max-width: 550px) {
+  .useraccount .createaccountwrapper {
+    box-shadow: none;
+    width: initial;
+    margin: 0;
+  }
+  .useraccount .createaccountwrapper .keepforgotwrapper {
+    flex-direction: column;
+    gap: 15px;
+  }
+  .useraccount .createaccountwrapper .signin-wrapper .or:before {
+    left: 30px;
+  }
+  .useraccount .createaccountwrapper .signin-wrapper .or:after {
+    right: 30px;
+  }
+  .useraccount .createaccountwrapper .signin-wrapper .easysignin {
+    flex-direction: column;
+    gap: 15px;
+  }
+}/*# sourceMappingURL=style.css.map */

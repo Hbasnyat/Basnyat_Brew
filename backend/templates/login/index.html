@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Basnyat Brew</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+      integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.3.0/css/font-awesome.css"
+    />
+    {% load static %}
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Catamaran:wght@100..900&family=Caudex:ital,wght@0,400;0,700;1,400;1,700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/login/style.css' %}">
+    <script type="text/javascript" src="{% static 'js/jquery.min.js' %}"></script>
+  </head>
+  <body>
+    <section class="Hero-section">
+      <div class="topbar">
+        {% include 'navbar.html' %}
+            {% block navbar %}
+            {% endblock %}
+    <section class="useraccount">
+        <div class="createaccountwrapper">
+            <h2>Sign in</h2>
+            <p>Welcome back! Log in to access your account and continue your journey with us.</p>
+            <form method="post" action="{% url 'login' %}">
+                {% csrf_token %}
+                <input type="hidden" name="next" value="{{ next }}">
+                <div class="account-privacy">
+                    <label class="email">
+                        <input type="text" id="email" name="email" placeholder="*Email address" class="form-control">
+                        <div id="emailError" class="error"></div>
+                    </label>
+                    <label class="password">
+                      <div class="input-eye">
+                        <input type="password" id="password" name="password" placeholder="*Password" class="form-control">
+                        <div class="eye-icon "><i class="fa fa-eye toggle-password"></i></div>
+                      </div>                      
+                        <div id="passwordError" class="error"></div>
+                    </label>
+                </div>
+                <div class="keepforgotwrapper">
+                    <div class="keep">
+                     
+                            <input type="checkbox" id="keep" name="keep" value="check">
+                            <label for="vehicle1">Keep me signed in.</label>
+                       
+                    </div>
+                    <div class="forgot" style="margin: 4px;">
+                        <a href="{% url 'password_reset' %}"  >Forgot password?</a><br/>  
+                    </div>
+                    
+                </div>
+                <div class="orderBtn" id="create">
+                    <button type="submit"><span>Sign in</span></a>
+                    <span></span>
+                  </div>
+                  <div class="sign-up">
+                    <p>Don't have an account? <a href="{% url 'register' %}">Sign up</a></p>
+                  </div>
+            </form>
+            <div class="signin-wrapper">
+              
+</section>
+
+<script>
+  $(document).on('click', '.toggle-password', function() {
+      $(this).toggleClass("fa-eye fa-eye-slash");
+      var input = $("#password");
+      input.attr('type') === 'password' ? input.attr('type','text') : input.attr('type','password');
+  });
+
+  $('#create').click(function(){
+      checkEmail();
+      checkPassword();
+      if(userError || emailError || phoneNumberError || passwordError){
+          return false;
+      }else{
+          return true;
+      }
+  });
+
+  $('#email').focusout(function(){
+      checkEmail();
+  });
+
+  $('#password').focusout(function(){
+      checkPassword();
+  });
+
+  var userError = false;
+  var emailError = false;
+  var passwordError = false;
+
+  function checkEmail(){
+      var email = $('#email').val();
+      var pattern = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+      if(email.length == 0){
+          $('#emailError').html('Email is required.');
+          emailError = true;
+      }else{
+          if(!email.match(pattern)){
+              $('#emailError').html('Invalid Email address.');
+              emailError = true;    
+          }else{
+              $('#emailError').empty();
+              emailError = false;
+          }
+      }
+  };
+
+  function checkPassword(){
+      var password = $('#password').val();
+      var pattern = /^(?=.*[a-z])(?=.*[A-Z]).{8,25}$/;
+      if(password.length == 0){
+          $('#passwordError').html('Password is required.');
+          passwordError = true;
+      }else{
+          if(!password.match(pattern)){
+              $('#passwordError').html('invalid password.');
+              passwordError = true;    
+          }else{
+              $('#passwordError').empty();
+              passwordError = false;
+          }
+      }
+  };
+</script>
+{% include 'footer.html' %}
+    {% block footer %}
+    {% endblock %}
+  </body>
+</html>

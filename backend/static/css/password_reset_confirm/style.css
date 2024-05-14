@@ -1,0 +1,219 @@
+.Hero-section .topbar {
+    position: initial;
+  }
+  .Hero-section .topbar .navWrapper {
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  .Hero-section .topbar .navWrapper .navbar .logo img {
+    filter: invert(1);
+  }
+  .Hero-section .topbar .navWrapper .navbar .navigationWrapper ul li a {
+    color: #363636;
+  }
+  .Hero-section .topbar .navWrapper .navbar .navigationWrapper ul li a:after {
+    background-color: #363636;
+  }
+  .Hero-section .topbar .navWrapper .navbar .navigationWrapper ul li:first-child a::after {
+    transform: scaleX(0);
+  }
+  .Hero-section .topbar .navWrapper .navbar .navigationWrapper ul li:hover:first-child a::after {
+    transform: scaleX(1);
+  }
+  .Hero-section .topbar .navWrapper .navbar .cart-menuWrapper ul li img {
+    filter: invert(1);
+  }
+  .Hero-section .topbar .navWrapper .navbar .cart-menuWrapper ul li .nav-icon1 span, .Hero-section .topbar .navWrapper .navbar .cart-menuWrapper ul li .nav-icon2 span {
+    background-color: #363636;
+  }
+  .Hero-section .topbar .navWrapper .navbar .cart-menuWrapper ul .searchIcon a {
+    color: #363636;
+    font-weight: 600;
+  }
+  .Hero-section .topbar .navWrapper .navbar .cart-menuWrapper ul .searchIcon a::after {
+    background-color: #363636;
+  }
+  
+  .useraccount .createaccountwrapper {
+    width: 436px;
+    margin: 48px auto;
+    background: #fff;
+    padding: 32px;
+    border-radius: 16px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+  .useraccount .createaccountwrapper h2 {
+    font-size: 24px;
+    text-transform: initial;
+    letter-spacing: 1.5px;
+    text-align: center;
+    width: initial;
+  }
+  .useraccount .createaccountwrapper h2::after {
+    display: none;
+  }
+  .useraccount .createaccountwrapper p {
+    font-size: 17px;
+    width: 80%;
+    margin: 0 auto;
+    text-align: start;
+    margin-top: 8px;
+  }
+  .useraccount .createaccountwrapper .pass-condition {
+    width: -moz-fit-content;
+    width: fit-content;
+    margin: 0 auto;
+    margin-left: 80px;
+  }
+  .useraccount .createaccountwrapper .pass-condition li {
+    font-size: 16px;
+    font-family: var(--secondary-font);
+    letter-spacing: 1px;
+    position: relative;
+  }
+  .useraccount .createaccountwrapper .pass-condition li::before {
+    content: "";
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    left: -15px;
+    top: 50%;
+    background-color: #D9D9D9;
+    transform: translate(0, -50%);
+  }
+  .useraccount .createaccountwrapper .pass-condition .mini-list {
+    margin-left: 20px;
+  }
+  .useraccount .createaccountwrapper .pass-condition .mini-list li::before {
+    width: 7px;
+    height: 7px;
+    background-color: #5E5E5E;
+  }
+  .useraccount .createaccountwrapper label {
+    margin-left: 21px;
+  }
+  .useraccount .createaccountwrapper #password {
+    margin-top: 18px;
+  }
+  .useraccount .createaccountwrapper #confirmPassword, .useraccount .createaccountwrapper #password {
+    width: -webkit-fill-available;
+    margin: 0;
+    height: 42px;
+    padding-left: 16px;
+    font-family: var(--secondary-font);
+    font-size: 16px;
+    letter-spacing: 1px;
+    color: #363636;
+    border: none;
+    border: 1.5px solid #949494;
+  }
+  .useraccount .createaccountwrapper #confirmPassword:focus, .useraccount .createaccountwrapper #password:focus {
+    outline: none;
+  }
+  .useraccount .createaccountwrapper .input-eye {
+    margin-left: 21px;
+    width: 90%;
+    position: relative;
+    margin-top: 16px;
+  }
+  .useraccount .createaccountwrapper .input-eye .eye-icon {
+    position: absolute;
+    right: 8px;
+    top: 50%;
+    transform: translate(0, -50%);
+  }
+  .useraccount .createaccountwrapper .error {
+    margin-left: 36px;
+    font-family: var(--secondary-font);
+    font-size: 15px;
+    letter-spacing: 1px;
+    color: #ff0404;
+  }
+  .useraccount .createaccountwrapper .orderBtn {
+    width: 90%;
+    margin: 0 auto;
+    margin-top: 32px;
+  }
+  .useraccount .createaccountwrapper .orderBtn a {
+    text-transform: none;
+    font-size: 16px;
+  }
+  .useraccount .createaccountwrapper .signin-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .useraccount .createaccountwrapper .signin-wrapper .or {
+    width: 100%;
+    position: relative;
+    text-align: center;
+    margin: 16px 0;
+    font-family: var(--secondary-font);
+    letter-spacing: 1px;
+  }
+  .useraccount .createaccountwrapper .signin-wrapper .or::before {
+    content: "";
+    height: 1px;
+    width: 30%;
+    position: absolute;
+    left: 60px;
+    top: 50%;
+    background-color: #898989;
+  }
+  .useraccount .createaccountwrapper .signin-wrapper .or:after {
+    content: "";
+    height: 1px;
+    width: 30%;
+    position: absolute;
+    right: 60px;
+    top: 50%;
+    background-color: #898989;
+  }
+  .useraccount .createaccountwrapper .signin-wrapper .easysignin {
+    display: flex;
+    width: 91%;
+    justify-content: space-between;
+  }
+  .useraccount .createaccountwrapper .signin-wrapper .easysignin .g-signin, .useraccount .createaccountwrapper .signin-wrapper .easysignin .a-signin {
+    color: #363636;
+    padding: 7px 15px;
+    border: 1px solid #B8B8B8;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transition: 0.2s all;
+  }
+  .useraccount .createaccountwrapper .signin-wrapper .easysignin .g-signin span, .useraccount .createaccountwrapper .signin-wrapper .easysignin .a-signin span {
+    font-family: var(--secondary-font);
+    font-size: 14px;
+    letter-spacing: 1px;
+    font-weight: 600;
+  }
+  .useraccount .createaccountwrapper .signin-wrapper .easysignin .g-signin:hover, .useraccount .createaccountwrapper .signin-wrapper .easysignin .a-signin:hover {
+    background-color: #f3f3f3;
+  }
+  
+  @media only screen and (max-width: 550px) {
+    .useraccount .createaccountwrapper {
+      box-shadow: none;
+      width: initial;
+      margin: 0;
+      padding: 10px;
+      padding-top: 30px;
+    }
+    .useraccount .createaccountwrapper .keepforgotwrapper {
+      flex-direction: column;
+      gap: 15px;
+    }
+    .useraccount .createaccountwrapper .signin-wrapper .or:before {
+      left: 30px;
+    }
+    .useraccount .createaccountwrapper .signin-wrapper .or:after {
+      right: 30px;
+    }
+    .useraccount .createaccountwrapper .signin-wrapper .easysignin {
+      flex-direction: column;
+      gap: 15px;
+    }
+  }/*# sourceMappingURL=style.css.map */

@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Basnyat Brew</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+      integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    {% load static %}
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.3.0/css/font-awesome.css"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Catamaran:wght@100..900&family=Caudex:ital,wght@0,400;0,700;1,400;1,700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/create_account/style.css' %}">
+    <script type="text/javascript" src="{% static 'js/jquery.min.js' %}"></script>
+    
+  </head>
+  <body>
+    <section class="Hero-section">
+      <div class="topbar">
+    {% include 'navbar.html' %}
+    {% block navbar %}
+    {% endblock %}
+    <section class="useraccount">
+      <div class="createaccountwrapper">
+          <h2>Create  an account</h2>
+          <p>Join our platform and start exploring today! Sign up now to unlock exclusive offers</p>
+          <form action="" method="post">
+            {% csrf_token %}
+              <div class="personal-info">
+                  <h3>Personal Information</h3>
+
+                  <label class="username">
+                      <input type="text" id="username" name="username" placeholder="*Name" class="form-control">
+                      <div id="usernameError" class="error"></div>
+                  </label>
+              </div>
+              <div class="account-privacy">
+                  <h3>Account & Privacy</h3>
+                  <label class="email">
+                      <input type="text" id="email" name="email" placeholder="*Email address" class="form-control">
+                      <div id="emailError" class="error"></div>
+                      <p class="hint">This will be your username</p>
+                  </label>
+                  <label class="password">
+                      <input type="password" id="password" name="password" placeholder="*Password" class="form-control">
+                      <div id="passwordError" class="error"></div>
+                      <p class="hint">Create a password 8 to 25 characters long that includes at least 1 uppercase and 1 lowercase letter.</p>
+                  </label>
+              </div>
+              
+              <div class="orderBtn" id="create">
+                  <button type="submit"><span>Create account</span></button>
+                  <span></span>
+                </div>
+          </form>
+          
+              <div class="haveaccount">
+                  <p>Have an account? <a href="{% url 'login' %} ">Sign in</a></p>
+              </div>
+          </div>
+</div>
+</section>
+
+<script>
+  $('#create').click(function(){
+      checkUsername();
+      checkEmail();
+      checkPassword();
+      if(userError || emailError || phoneNumberError || passwordError){
+          return false;
+      }else{
+          return true;
+      }
+  });
+
+  $('#username').focusout(function(){
+      checkUsername();
+  });
+  $('#email').focusout(function(){
+      checkEmail();
+  });
+
+  $('#password').focusout(function(){
+      checkPassword();
+  });
+
+  var userError = false;
+  var emailError = false;
+  var passwordError = false;
+
+  function checkUsername(){
+      var username = $('#username').val();
+      if(username.length == 0){
+          $('#usernameError').html('Name is required.');
+          userError = true;
+      }else{
+          if(username.length < 3){
+              $('#usernameError').html('Invalid username.');
+              userError = true;
+          }else{
+              $('#usernameError').empty();
+              userError = false;
+          }
+      }
+  };
+
+  function checkEmail(){
+      var email = $('#email').val();
+      var pattern = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+      if(email.length == 0){
+          $('#emailError').html('Email is required.');
+          emailError = true;
+      }else{
+          if(!email.match(pattern)){
+              $('#emailError').html('Invalid Email address.');
+              emailError = true;	
+          }else{
+              $('#emailError').empty();
+              emailError = false;
+          }
+      }
+  };
+
+
+  function checkPassword(){
+      var password = $('#password').val();
+      var pattern = /^(?=.*[a-z])(?=.*[A-Z]).{8,25}$/;
+      if(password.length == 0){
+          $('#passwordError').html('Password is required.');
+          passwordError = true;
+      }else{
+          if(!password.match(pattern)){
+              $('#passwordError').html('invalid password.');
+              passwordError = true;	
+          }else{
+              $('#passwordError').empty();
+              passwordError = false;
+          }
+      }
+  };
+</script>
+
+    </section>
+   
+    {% include 'footer.html' %}
+    {% block footer %}
+    {% endblock %}
+    <script type="text/javascript" src="{% static 'js/main.js' %}"></script>
+  </body>
+</html>

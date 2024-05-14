@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Basnyat Brew</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+      integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    {% load static %}
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.3.0/css/font-awesome.css"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Catamaran:wght@100..900&family=Caudex:ital,wght@0,400;0,700;1,400;1,700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/contact_page/style.css' %}">
+    <script type="text/javascript" src="{% static 'js/jquery.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/slick.min.js' %}"></script>
+  </head>
+  <body>
+    <section class="Hero-section">
+      <div class="topbar">
+       {% include 'navbar.html' %}
+       {% block navbar %}{% endblock %}
+    <section class="about-us-header">
+      <div class="about-us-head-text">
+        <h3 class="about-head">Contact Us</h3>
+        <span>Home/contact us</span>
+      </div>
+    </section>
+    <section class="contact-form-wrapper">
+      <div class="contact-form container">
+        <div class="contact-form-head">
+          <h2>get in touch</h2>
+          <p>BasnyatBrew: Where craftsmanship meets flavor, indulging your senses sip by sip</p>
+        </div>
+        <form method="post">
+          {% csrf_token %}
+          
+          <div class="contact-grid">
+            
+            <input type="text" placeholder="*Name" name="name" required>
+            <input type="text" placeholder="*Email" name="email" required>
+            <input type="text" placeholder="*Phone" name="phone" required>
+            <input type="text" placeholder="*Subject" name="subject" required>
+          </div>
+          <textarea placeholder="Message" rows="4" name="message" required></textarea>
+          <button type="submit" class="orderBtn">
+            <a ><span>Send Message</span></a>
+            <span></span>
+          </button>
+        </form>
+      </div>
+    </section>
+    <section class="contact-locations">
+      <div class="contact-location-wrapper container">
+        <div class="location-img">
+          <img src="{% static 'images/assets/contactus/shop.jpg' %}" alt="">
+        </div>
+        <div class="contact-locations-wrapper">
+          <h2>Our locations</h2>
+          <div class="location-list">
+            <ul>
+              <li>Basantapur, Kathmandu</li>
+              <li>Bagbazar, Kathmandu</li>
+              <li>Kalanki, Kathmandu</li>
+              <li>Swayambhu, Kathmandu</li>
+              <li>Lainchaur, Kathmandu</li>
+              <li>Tokha, Kathmandu</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    {% include 'footer.html' %} 
+    {% block footer %}{% endblock %}
+  </body>
+</html>

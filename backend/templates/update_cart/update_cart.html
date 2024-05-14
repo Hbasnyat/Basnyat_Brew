@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Basnyat Brew</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+      integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    {% load static %}
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.3.0/css/font-awesome.css"
+    />
+    <link rel="stylesheet" type="text/css" href="{% static 'css/slick.css' %}" />
+    <link rel="stylesheet" type="text/css" href="{% static 'css/slick-theme.css' %}" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Catamaran:wght@100..900&family=Caudex:ital,wght@0,400;0,700;1,400;1,700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/update_cart/style.css' %}">
+    <script type="text/javascript" src="{% static 'js/jquery.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/slick.min.js' %}"></script>
+    
+  </head>
+  <body>
+    <section class="Hero-section">
+      <div class="topbar">
+   {% include 'navbar.html' %}
+   {% block navbar %}
+   {% endblock %}
+   <section class="productcartsection">
+    <div class="allwrapper container">
+        <div class="producttag">
+            <span>Menu / Drinks / {{ product.name }}</span>
+        </div>
+        <div class="productwrapper">
+            <div class="pdetails">
+                <h3>{{ product.name }}</h3>
+                <div class="detailseditor">
+                    <h4>Customized Recipe</h4>
+                    <!-- Flavor Option -->
+                    {% if product_flavours %}
+                   
+                    <div class="flavoroption">
+                        <p>Flavor</p>
+                        <form method="POST">
+                          {% csrf_token %}
+                        <div class="flavorenhancer">
+                            <select id="flavour" name="flavour" required>
+                                {% for flavour in product_flavours %}
+                                <option value="{{ flavour.name }}" {% if flavour.name in cart_item.flavour %} selected {% endif %}>{{ flavour.name }}</option>
+                                {% endfor %}
+                            </select>
+                        </div>
+                    </div>
+                    {% endif %}
+                    <!-- Sweetener Option -->
+                    {% if product_sweeteners %}
+                    <div class="shotsoption">
+                        <p>Sweetener</p>
+                        <div class="flavorenhancer">
+                            <select id="sweetener" name="sweetener" required>
+                                <option value="">Select Sweetener</option>
+                                {% for sweetener in product_sweeteners %}
+                                <option value="{{ sweetener.name }}" {% if cart_item.sweetener == sweetener.name %} selected {% endif %}>{{ sweetener.name }}</option>
+                                {% endfor %}
+                            </select>
+                        </div>
+                    </div>
+                    {% endif %}
+                    <!-- Milk Option -->
+                    {% if product_milks %}
+                    <div class="milkoption">
+                        <p>Milk</p>
+                        <div class="optiondropdown">
+                            
+                                <ul>
+                                    <select id="milk" name="milk" required>
+                                        {% for milk in product_milks %}
+                                        <option value="{{ milk }}" {% if cart_item.milk == milk %} selected {% endif %}>{{ milk }}</option>
+                                        {% endfor %}
+                                    </select>
+                                </ul>
+                            
+                        </div>
+                    </div>
+                    {% else %}
+                    <form method="POST">
+                      {% csrf_token %}
+                    {% endif %}
+                    <!-- Quantity -->
+                    <div class="quantityaddwrapper">
+                        <div class="quantity">
+                            <h5>Quantity</h5>
+                            <div class="count">
+                                <div class="input-with-buttons">
+                                    <input type="number" id="quantity" name="quantity" value="{{ cart_item.quantity }}" min="0" max="20" required>
+                                </div> 
+                            </div>
+                        </div>
+                        <!-- Update Button -->
+                        <div class="orderBtn">
+                            <button type="submit">Update</button>
+                            <span class="add-to-cart-message"></span>
+                        </div>
+                    </div>
+                   
+                </div>
+            </div>
+          
+            <div class="produtimgwrapper">
+                <div class="productimg">
+                    <img src="{{ product.image.url }}" alt="{{ product.name }}">
+                </div>
+                <!-- Size Options -->
+                {% if product_milks %}
+                <div class="productsize">
+                    <h4>Size Options</h4>
+                    <div class="sizeslist">
+                        <div class="size">
+                            <div class="siz">
+                                {% for size in cup_sizes %}
+                                <li class="{% if forloop.first %}active{% endif %}" data-value="{{ size.name }}">
+                                    <div class="size-1">
+                                        <span>{{ size.name }}</span>
+                                        <span>{{ size.volume }} fl oz</span>
+                                    </div>
+                                </li>
+                                {% endfor %}
+                                <input type="hidden" id="cup_size_input" name="cup_size" value="{{ cart_item.cup_size }}">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {% endif %}
+            </div>
+            
+          </form>
+          </div>
+    </div>
+</section>
+
+        
+        <script>
+            var lis = document.querySelectorAll('.sizeslist li');
+            lis.forEach(function(li) {
+                li.addEventListener('click', function() {
+                    lis.forEach(function(item) {
+                        item.classList.remove('active');
+                    });
+                    this.classList.add('active');
+                    var selectedCupSize = this.getAttribute('data-value');
+                    document.getElementById('cup_size_input').value = selectedCupSize;
+                });
+            });
+        </script>
+                
+                
+                
+              </div>
+            </div>
+          </div>
+         
+        </div>
+    </section>
+    <section class="description">
+      <div class="descripwrapper container">
+        <div class="dlinks">
+          <ul>
+            <li id="description-tab" class="active">Description</li>
+          </ul>
+        </div>
+        <div class="contents">
+          <div id="description-content" class="descriptioncontent active">
+            <span>Savor the essence of the Himalayas with our Himalayan Heritage Espresso. Crafted from premium coffee beans sourced from the foothills of Nepal, this bold and intense espresso blend offers a truly immersive experience. With rich notes of dark chocolate and caramel, every sip transports you to the majestic peaks and serene landscapes of the Himalayan region. Indulge in the heritage of Nepal’s coffee culture with each velvety-smooth shot of our Himalayan Heritage Espresso</span>
+          </div>
+        </div>
+      </div>
+      
+    </section>
+    <section class="relatedproducts">
+      <div class="relatedwrapper container">
+      
+        <div class="tealist contentlist" style="display: block;">
+          <ul>
+            {% for related_product in related_products %}
+            <li>
+              <div class="maincontents">
+                <div class="content-img">
+                  <img src="{{ related_product.image.url }}" alt="{{ related_product.name }}">
+                  <div class="orderbtn">
+                    <a href="{% url 'select_quantity' related_product.id %}">Order now</a>
+                  </div>
+                </div>
+                <div class="contenthead">
+                  <h5>{{ related_product.name }}</h5>
+                  <p>{{ related_product.shortdescription }}</p>
+                  <span>${{ related_product.dollarprice }}/{{ related_product.price }}</span>
+                </div>
+              </div>
+            </li>
+            {% endfor %}
+          </ul>
+        </div>
+      </div>
+    </section>
+    
+  
+
+        </ul>
+      </div>
+     </div>
+    </section>
+{% include 'footer.html' %}
+{% block footer %}
+{% endblock %}
+    <script type="text/javascript" src="../main.js"></script>
+  </body>
+</html>
+

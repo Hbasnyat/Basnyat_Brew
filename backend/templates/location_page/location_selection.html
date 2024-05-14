@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Basnyat Brew</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+      integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    {% load static %}
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.3.0/css/font-awesome.css"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Catamaran:wght@100..900&family=Caudex:ital,wght@0,400;0,700;1,400;1,700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}" />
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
+
+    <link rel="stylesheet" href="../../static/css/location_selection/style.css"/>
+    <script type="text/javascript" src="{% static 'js/jquery.min.js' %}"></script>
+    <script type="text/javascript" src="{% static '/js/slick.min.js' %}"></script>
+<script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
+<script src="https://unpkg.com/leaflet-control-search/dist/leaflet-search.min.js"></script>
+
+  </head>
+  <body>
+    <body>
+      <section class="Hero-section">
+        <div class="topbar">
+          {% include 'navbar.html' %}
+          {% block navbar %}
+          {% endblock %}
+          <section class="mapsection">
+            <div class="mapwrapper container">
+                <div class="locationwrapper">
+                    <div class="loactionhead">
+                        <h3>Locations</h3>
+                        
+
+                    </div>
+                    <div class="locationlist">
+                      <form id="locationForm" action="{% url 'location_selection' %}" method="post">
+                        {% csrf_token %}
+                        {% if from_cart == 'cart' %}
+                            <input type="hidden" name="from_cart" value="cart">
+                        {% endif %}
+                        <ul>
+                            {% for location in locations %}
+                            <li class="active">
+                                <div class="location-1">
+                                    <div class="locationdetail">
+                                        <h4>{{ location.cafe_name }}</h4>
+                                        <p>{{ location.address }}</p>
+                                        <span>Open Until {{ location.opening_time }}</span>
+                                        <h5>0.19 mi</h5>
+                                    </div>
+                                    <div class="orderbtn">
+                                        <span class="order-span" data-location-id="{{ location.id }}">Order Here</span>
+                                        <button type="submit" name="location" value="{{ location.id }}" class="hidden-submit" style="display: none;"></button>
+                                    </div>
+                                </div>
+                            </li>
+                            {% endfor %}
+                        </ul>
+                        </form>
+                    </div>
+                </div>
+                <div class="allmap">
+                    <div id="map"></div>
+                    <form method="GET" action="{% url 'location_selection' %}">
+                        <div class="search-btn">
+                            <input id="searchInput" type="text" name="query" placeholder="Search for a location...">
+                            <button type="submit" id="searchButton">Search</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </section>
+        
+        <script>
+          // Get all order span elements
+          var orderSpans = document.querySelectorAll('.order-span');
+      
+          // Loop through each order span
+          orderSpans.forEach(function(span) {
+              span.addEventListener('click', function() {
+                  // Get the location ID from the data-location-id attribute
+                  var locationId = this.getAttribute('data-location-id');
+                  // Find the hidden submit button corresponding to the location ID
+                  var hiddenSubmit = document.querySelector('button[value="' + locationId + '"]');
+                  // Trigger the click event on the hidden submit button
+                  hiddenSubmit.click();
+              });
+          });
+      </script>
+      
+        <!-- Leaflet JavaScript -->
+        <script>
+            var map = L.map('map').setView([27.7172, 85.3240], 13); // Centered around Kathmandu, Nepal
+        
+            L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+            }).addTo(map);
+        
+            // Define coffee shop locations with names
+            var coffeeShops = [
+                { name: 'Brothers Brew', location: [27.7033, 85.3176] }, // Brothers Brew coffee shop location
+                { name: 'Brothers Brew', location: [27.7220, 85.3231] }, // Example: Another coffee shop location
+                // Add more coffee shop locations here as needed
+            ];
+        
+            // Add markers for each coffee shop
+            coffeeShops.forEach(function (shop) {
+                L.marker(shop.location).addTo(map).bindPopup(shop.name).openPopup(); // Display shop name as a popup
+            });
+        </script>
+        
+     {% include 'footer.html' %}
+     {% block footer %}
+      {% endblock %}
+      <script type="text/javascript" src="../../main.js"></script>
+      <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
+  
+      <!-- Leaflet Control Search JavaScript -->
+      <script src="https://unpkg.com/leaflet-control-search/dist/leaflet-search.min.js"></script>
+    </body>
+</html>

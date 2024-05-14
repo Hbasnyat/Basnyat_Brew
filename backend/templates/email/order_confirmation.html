@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Order Confirmation</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+
+        h2 {
+            color: #333;
+        }
+
+        h3 {
+            color: #666;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+        }
+
+        table, th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #f2f2f2;
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+            margin: 20px auto;
+        }
+    </style>
+</head>
+<body>
+    <h2>Order Confirmation</h2>
+    <p>Thank you for your order! Here are the details:</p>
+
+    <h3>Order Information</h3>
+    <p>Order ID: {{ order.id }}</p>
+    <p>Date Ordered: {{ order.date_ordered }}</p>
+    <p>Status: {{ order.status }}</p>
+
+    <h3>Items Ordered</h3>
+    <table>
+        <tr>
+            <th>Product</th>
+            <th>Quantity</th>
+            <th>Price</th>
+        </tr>
+        {% for order_item in order.orderitem_set.all %}
+        <tr>
+            <td>{{ order_item.product.name }}</td>
+            <td>{{ order_item.quantity }}</td>
+            <td>${{ order_item.total_amount }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+    
+    <p>Your drink will be ready in 5 minutes</p>
+    <p>Thank you for shopping with us!</p>
+
+    <!-- Add your image here -->
+    <img src="../assets/menupage/burger/b" alt="Your Image Alt Text">
+</body>
+</html>

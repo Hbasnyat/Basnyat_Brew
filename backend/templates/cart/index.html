@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Basnyat Brew</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+      integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    {% load static %}
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.3.0/css/font-awesome.css"
+    />
+    <link rel="stylesheet" type="text/css" href="{% static 'css/slick.css' %}" />
+    <link rel="stylesheet" type="text/css" href="{% static '/css/slick-theme.css' %} />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Catamaran:wght@100..900&family=Caudex:ital,wght@0,400;0,700;1,400;1,700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}?v=1" />
+    <link rel="stylesheet" href="../../static/css/cart/style.css">
+    <script type="text/javascript" src="{% static 'js/jquery.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/slick.min.js' %}"></script>
+    
+  </head>
+  <body>
+    <section class="Hero-section">
+      <div class="topbar">
+  {% include 'navbar.html' %}
+  {% block navbar %}
+  {% endblock %}
+  <section class="allcart">
+
+    <div class="cartwrapper container">
+      <div class="changeloc">
+        <div class="choosedloc">
+          <p>{{ location.cafe_name }},{{ location.address }} Kathmandu</p>
+        </div>
+        <div class="orderBtn">
+          <a href="{% url 'location_selection' %}?from=cart">Select Location</a>
+
+          <span></span>
+        </div>
+      </div>
+      <div class="carthead">
+        <div class="pickuptype">
+          <h4>Pick up type</h4>
+          <div class="pickicon">
+            <img src="{% static 'images/assets/icons/storeicon.png' %}" alt="">
+            <span>In store</span>
+          </div>
+        </div>
+      </div>
+      <div class="mycart">
+        <h3>My cart</h3>
+        <div class="mycartwrapper">
+          <div class="cart-1">
+            <div class="producthead">
+              <ul>
+                <li>Product</li>
+                <div class="pricing">
+                  <li>Price</li>
+                <li>Quantity</li>
+                <li>Total</li>
+                </div>
+              </ul>
+            </div>
+            <div class="productcartdetail">
+              <ul class="addedproductwrapper">
+                {% for item in cart_items %}
+                <li class="cart-detail-li">
+                  <div class="product">
+                    <form action="{% url 'remove_from_cart' item.product.id %}" method="post">
+                        {% csrf_token %}
+                        <input type="hidden" name="item_id" value="{{ item.id }}">
+                        <button class="delete-btn" type="submit"><i class="fa fa-trash-o"></i></button>
+                    </form>
+                    <img src="{{ item.product.image.url }}" width="146px"
+                    height="146px" alt="{{ item.product.name }}">
+                    <div class="description">
+                        <h4>{{ item.product.name }}</h4>
+                        {% if item.milk %}
+                        <p>milk: {{ item.milk }}</p>
+                        {% endif %}
+                        {% if item.flavour %}
+                        <p>flavour: {{ item.flavour }}</p>
+                        {% endif %}
+                        {% if item.sweetener %}
+                        <p>sweetener: {{ item.sweetener }}</p>
+                        {% endif %}
+                        
+                        <p>Quantity: {{ item.quantity }}</p>
+                    </div>
+                  </div>
+                  <div class="pricingContent">
+                    <form action="{% url 'add_more_to_cart' item.id %}" method="post">
+                        {% csrf_token %}
+                        <input type="hidden" name="quantity" value="1">
+                             
+                              <input type="hidden" name="milks" value="{{ item.milk }}">
+                              <input type="hidden" name="flavour" value="{{ item.flavour }}">
+                              <input type="hidden" name="sweetener" value="{{ item.sweetener }}">
+                              <input type="hidden" name="cup_size" value="{{ item.cup_size }}">
+                      <ul class="pricecontentwrapper">
+                        <li id="price">${{ item.product.dollarprice }}</li>
+                        <button type="submit" class="plusicon" id="quantity" >+</button>
+                        <li id="total">${{ item.total_quantity }}</li>
+                      </ul>
+                    </form>
+                  </div> 
+                  <button class="orderBtn update-btn">
+                    <a href="{% url 'update_cart_item' item.id %}" id="update"><span>Update cart</span></a>
+                    <span></span>
+                  </button>
+                </li>   
+                {% endfor %}                 
+              </ul>
+            </div>
+        
+
+            <div class="billing">
+              <h4>Cart Total</h4>
+              <div class="productprice">
+                <p>Sub total</p>
+                <span id="total">${{ total_price }}</span>
+              </div>
+              <div class="productprice">
+                <p>total</p>
+                <span id="total">${{ total_price }}</span>
+              </div>
+              <div class="orderBtn">
+                <a href="{% url 'create_checkout_session' %}"><span>Proceed to Checkout</span></a>
+                <span></span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="undo-wrapper" style="display: none;">
+          <button id="undoButton">Undo</button>
+          Your cart is empty
+          <div class="orderBtn">
+            <a href="../add to cart/index.html"><span>Return to shop</span></a>
+            <span></span>
+          </div>
+        </div>
+      </div>
+    </div>
+    {% include 'footer.html' %}
+    {% block footer %}
+    {% endblock %}
+    <script type="text/javascript" src="{% static 'js/main.js' %}"></script>
+  </body>
+</html>

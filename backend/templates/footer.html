@@ -1,0 +1,163 @@
+{% load static %}
+{% block footer %}
+<section class="footer">
+    <div class="newsletter">
+      <h3>subscribe to our newsletter</h3>
+      <p>Sign up with your email address to receive news and updates</p>
+      <form id="subscriptionForm" method="post" action="{% url 'subscribe_from_footer' %}">
+        {% csrf_token %}
+        <div class="newsletterinput">
+            <input type="text" name="email" id="emailInput" placeholder="your email address">
+            <div class="orderBtn">
+                <a href="#" id="subscribeLink"><span>Subscribe</span></a>
+                <span></span>
+            </div>
+        </div>
+        <input type="hidden" name="hidden_email" id="hiddenEmailInput">
+        <button type="submit" id="hiddenSubmitBtn" style="display: none;"></button>
+    </form>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            document.getElementById('subscribeLink').addEventListener('click', function(event) {
+                event.preventDefault(); // Prevent default link behavior
+                var emailInputValue = document.getElementById('emailInput').value.trim();
+                if (emailInputValue !== '') {
+                    document.getElementById('hiddenEmailInput').value = emailInputValue;
+                    document.getElementById('hiddenSubmitBtn').click(); // Trigger form submission
+                } else {
+                    alert("Please enter your email address");
+                }
+            });
+        });
+    </script>
+        
+    </div>
+    <div class="footerwrapper container">
+      <div class="company-info">
+        <img class="footer-logo" src="{% static 'images/assets/Logo.svg' %}" alt="">
+        <p>A Symphony of Flavors in Every Sip.</p>
+        <div class="links">
+          <ul>
+            <li>
+              <a href="#"><img src="{% static 'images/assets/icons/fb logo.svg' %}" height="16px" width="9px"/></a>
+            </li>
+
+            <li>
+              <a href="#"><img src="{% static 'images/assets/icons/twitter.svg' %}" height="16px" width="16px"/></i></a>
+            </li>
+            <li>
+              <a href="#"><img src="{% static 'images/assets/icons/insta icon.svg' %}" height="20px" width="20px"/></i></a>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div class="linksWrapper">
+        <div class="exploreLinks">
+          <h5>explore</h5>
+          <ul>
+            <li>
+              <a href="#">About us</a>
+            </li>
+            <li>
+              <a href="#">Sitemap</a>
+            </li>
+            <li>
+              <a href="{% url 'login' %}">Sign in</a>
+            </li>
+            <li>
+              <a href="{% url 'register' %}">Join</a>
+            </li>
+
+          </ul>
+        </div>
+        <div class="exploreLinks">
+          <h5>Customer service</h5>
+          <ul>
+            <li>
+              <a href="#">Help center</a>
+            </li>
+            <li>
+              <a href="#">return policy</a>
+            </li>
+            <li>
+              <a href="#">product details</a>
+            </li>
+            <li>
+              <a href="#">Accessibility</a>
+            </li>
+            <li>
+              <a href="#">Contact Us</a>
+            </li>
+
+          </ul>
+        </div>
+        <div class="exploreLinks">
+          <h5>policy</h5>
+          <ul>
+            <li>
+              <a href="#">Return policy</a>
+            </li>
+            <li>
+              <a href="#">terms of use</a>
+            </li>
+            <li>
+              <a href="#">security</a>
+            </li>
+            <li>
+              <a href="#">policy</a>
+            </li>
+
+          </ul>
+        </div>
+        <div class="exploreLinks">
+          <h5>categories</h5>
+          <ul>
+            <li>
+              <a href="#">coffee</a>
+            </li>
+            <li>
+              <a href="#">tea</a>
+            </li>
+            <li>
+              <a href="#">food</a>
+            </li>
+            <li>
+              <a href="#">Join</a>
+            </li>
+
+          </ul>
+        </div>
+      </div>
+    </div>
+    <script>
+
+
+
+    </script>
+  </section>
+  <section class="bottomfooter">
+    <div class="bottomfooterWrapper container">
+      <div class="navigationWrapper footer-nav">
+        <ul>
+          <li>
+            <a href="{% url 'home' %}">Home</a>
+          </li>
+          <li>
+            <a href="{% url 'drink_selection' %}">menu</a>
+          </li>
+          <li>
+            <a href="{% url 'rewards' %}">Rewards</a>
+          </li>
+          <li>
+            <a href="{% url 'location_selection' %}">locations</a>
+          </li>
+          <li>
+            <a href="{% url 'contact' %}">contact</a>
+          </li>
+        </ul>
+      </div>
+      <p>copyright ©2024 Brothers Brew. All rights reserved.</p>
+    </div>
+  </section>
+  <script type="text/javascript" src="{% static 'js/main.js' %}"></script>
+{% endblock %}

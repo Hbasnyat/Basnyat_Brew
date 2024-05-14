@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Basnyat Brew</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+      integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/slick.css' %}" />
+    <link rel="stylesheet" type="text/css" href="{% static 'css/slick-theme.css' %}" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.3.0/css/font-awesome.css"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Catamaran:wght@100..900&family=Caudex:ital,wght@0,400;0,700;1,400;1,700&family=Just+Me+Again+Down+Here&display=swap" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/reward/style.css' %}">
+    <script type="text/javascript" src="{% static 'js/jquery.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/slick.min.js' %}"></script>
+  </head>
+  <body>
+    <section class="Hero-section">
+      <div class="topbar">
+       {% include 'navbar.html' %}
+       {% block navbar %}{% endblock %}
+    <section class="rewardbanner">
+      <div class="rewardslider">
+        <div class="banner1">
+          <img src="../../static/images/assets/reward banner/banner1.jpg" width="100%" alt="">
+          <div class="bannertext">
+            <span class="freetext">buy 5 same drinks get 1 free</span>
+            <p>iced coffee latte</p>
+            <h2>Welcome to the Brothers Brew <re>Reward</re> Club!</h2>
+            <div class="orderBtn" id="create">
+              <a href="{% url 'drink_selection' %}"><span>order now</span></a>
+              <span></span>
+            </div>
+            <div class="links">
+              <ul>
+                <li>
+                  <a href="#"><img src="{% static 'images/assets/icons/fb logo.svg' %}" height="16px" width="9px"></a>
+                </li>
+  
+                <li>
+                  <a href="#"><img src="{% static 'images/assets/icons/twitter.svg' %}" height="16px" width="16px"></a>
+                </li>
+                <li>
+                  <a href="#"><img src="{% static 'images/assets/icons/insta icon.svg' %}" height="20px" width="20px"></a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="banner2">
+          <img src="../../static/images/assets/reward banner/banner2.jpg" width="100%" alt="">
+          <div class="bannertext">
+            <h2><re>refer</re>
+              and get  rewards</h2>
+            <p>Share the Love of Great Coffee and Earn Bonus Points
+              for Every Referral. Join Our Loyalty Program Today!</p>
+            <div class="orderBtn" id="create">
+              <a href="{% url 'login' %}"><span>join now</span></a>
+              <span></span>
+            </div>
+            <div class="links">
+              <ul>
+                <li>
+                  <a href="#"><img src="{% static 'images/assets/icons/fb logo.svg' %}" height="16px" width="9px"></a>
+                </li>
+  
+                <li>
+                  <a href="#"><img src="{% static 'images/assets/icons/twitter.svg' %}" height="16px" width="16px"></a>
+                </li>
+                <li>
+                  <a href="#"><img src="{% static 'images/assets/icons/insta icon.svg' %}" height="20px" width="20px"></a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+      <script>
+        $('.rewardslider').slick({
+            dots: false,
+            infinite: true,
+            speed: 300,
+            fade: true,
+            cssEase: 'linear',
+            autoplay: true,
+            slidesToShow: 1,
+            slidesToScroll: 1,
+           
+        });
+        $('.prevbtn').click(function(){
+      $('.banner-image-slider').slick('slickPrev');
+  });
+
+  $('.nextbtn').click(function(){
+      $('.banner-image-slider').slick('slickNext');
+  });
+    </script>
+    </section>
+    <section class="process">
+      <div class="processwrapper container">
+        <h2>how to get rewards</h2>
+        <div class="rewardprocesswrapper">
+          <div class="p-1">
+            <span>01</span>
+            <div class="processtext">
+              <h3>join</h3>
+              <p>create an account 
+                and get 300 points</p>
+            </div>
+          </div>
+          <div class="p-1">
+            <span>02</span>
+            <div class="processtext">
+              <h3>earn points</h3>
+              <p>Earn points in every shop and beyond,
+                maximizing rewards with diverse earning
+                opportunities and exclusive benefits.</p>
+            </div>
+          </div>
+          <div class="p-1">
+            <span>03</span>
+            <div class="processtext">
+              <h3>redeem points</h3>
+              <p>Redeem points for dollars, 
+                unlocking exclusive discounts and
+                 rewards effortlessly. Explore our 
+                wide range of offers and enjoy
+                 fantastic savings.</p>
+            </div>
+          </div>
+        </div>
+        <div class="orderBtn" id="create">
+          <a href="{% url 'home' %}"><span>learn more</span></a>
+          <span></span>
+        </div>
+      </div>
+    </section>
+   {% include 'footer.html' %}
+   {% block footer %}{% endblock %}
+  </body>
+</html>

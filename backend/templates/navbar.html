@@ -1,0 +1,126 @@
+{% load static %}
+{% block navbar %}
+
+
+      <div class="navWrapper" id="navWrapper">
+      
+        <div class="navbar container">
+          <div class="logo">
+            <a href="{% url 'home' %}"><img src="{% static 'images/assets/Logo.svg' %}" alt="" /></a>
+
+          </div>
+          
+          <div class="navigationWrapper">
+            <ul>
+              <li>
+                <a href="{% url 'home' %}">Home</a>
+              </li>
+              <li>
+                <a href="{% url 'drink_selection' %}">menu</a>
+              </li>
+              <li>
+                <a href="{% url 'rewards' %}">Rewards</a>
+              </li>
+              <li>
+                <a href="{% url 'location_selection' %}">locations</a>
+              </li>
+              <li>
+                <a href="{% url 'contact' %}">contact</a>
+              </li>
+              <li>
+                <a href="{% url 'about' %}">about us</a>
+              </li>
+             
+            </ul>
+          </div>
+          <div class="cart-menuWrapper">
+            <ul>
+              <li class="cart-iconli">
+                {% if user.is_authenticated %}
+                <a href="{% url 'cart' %}" class="cart-icon"><img src="{% static 'images/assets/icons/cart icon.svg' %}" height="20px" width="20px"/>
+                  <span id="cartItemCount">{{ cart_item_count }}</span>
+              </a>
+              {% else %}
+              <a href="{% url 'login' %}?next={{ request.path }}" class="cart-icon"><img src="{% static 'images/assets/icons/cart icon.svg' %}" height="20px" width="20px"/>
+                <span id="cartItemCount">{{ cart_item_count }}</span>
+            </a>
+            {% endif %}
+              </li>
+              <li class="searchIcon">
+                {% if user.is_authenticated %}
+                <a> {{ user.username }}</a>
+                <div class="user-log-out-drop">
+                  <a href="{% url 'logout' %}">Log Out</a>
+                 </div>
+            {% else %}
+                <a href="{% url 'login' %}">Sign in</a>
+            {% endif %}
+            
+               </li>
+              <li>
+                <div class="nav-icon1" onclick="openNav()">
+                  <span></span>
+                  <span></span>
+                  <span></span>
+                </div>
+                  <div class="nav-icon2">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                  </div>
+                <div id="mySidebar" class="sidebar">
+                  <div class="sidebar-wrapper">
+                    <div class="sidebar-overlay"></div>
+                    <a href="#" class="closebtn" onclick="closeNav()">×</a>
+                   
+                    <div class="address-contact">
+                      <a href="index.html"><img src="{% static 'images/assets/Logo.svg' %}" alt="" /></a>
+
+                      <p class="welcomeside">
+                        Welcome to Brothers Brew, an online heaven for true coffee lovers.
+                      </p>
+                    </div>
+                    <div class="address-contact">
+                      <p>
+                        brothersbrew98@gmail.com, <br />
+                        Nakkhu, Kathmandu, Nepal <br/>
+                        +01 2 312 9824
+                      </p>
+                    </div>
+                    <div class="sidebar-social-media-btn">
+                      <button class="search-btn-custom">
+                        <i class="fa fa-facebook"></i>
+                      </button>
+                      <button class="search-btn-custom">
+                        <i class="fa-brands fa-twitter"></i>
+                      </button>
+                      <button class="search-btn-custom">
+                        <i class="fa-brands fa-instagram"></i>
+                      </button>
+                    </div>
+                  </div>
+                </div>
+                <div id="responsivetopbar" class="topbar">
+                  <div class="responsiveliWrapper">
+                    <ul>
+                      <li><a href="{% url 'home' %}">Home</a></li>
+                      <li><a href="{% url 'drink_selection' %}">Menu</a></li>
+                      <li><a href="{% url 'rewards' %}">Rewards</a></li>
+                      <li><a href="{% url 'location_selection' %}">Location</a></li>
+                      <li><a href="{% url 'contact' %}">Contact</a></li>
+                    </ul>
+                    <ul class="sign-in-response">
+                      <li><a href="{% url 'login' %}">Sign in</a></li>
+                    </ul>
+                  </div>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  {% include 'messages.html' %}
+
+  {% endblock %}

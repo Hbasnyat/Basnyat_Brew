@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Basnyat Brew</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+      integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    {% load static %}
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.3.0/css/font-awesome.css"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Catamaran:wght@100..900&family=Caudex:ital,wght@0,400;0,700;1,400;1,700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/about_us/style.css' %}">
+    <script type="text/javascript" src="{% static 'js/jquery.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/slick.min.js' %}"></script>
+  </head>
+  <body>
+    <section class="Hero-section">
+      <div class="topbar">
+        {% include 'navbar.html' %}
+        {% block navbar %}
+        {% endblock %}
+    <section class="about-us-header">
+      <div class="about-us-head-text">
+        <h3 class="about-head">About Us</h3>
+        <span>Home/about us</span>
+      </div>
+    </section>
+    <section class="about-brothers">
+      <div class="about-us">
+        <h2>About Brothers Brew</h2>
+        <p>There are people who can’t start their day without having a freshly brewed cup of coffee and we understand them.</p>
+      </div>
+      <div class="our-company container">
+      
+        <div class="company-text">
+          <h2>Our company</h2>
+          <p class="p-company">Basnyat Brew is a culmination of a passion for coffee and a deep-rooted appreciation for Nepali culture and heritage. Founded on May 15, 2024, Basnyat Brew strives to celebrate the art of coffee brewing while embracing the essence of Nepal in every cup. Our journey began with a vision to deliver moments of blissful indulgence, where every sip tells a story of Himalayan heritage and unparalleled taste.
+
+At Basnyat Brew, we are committed to crafting exceptional coffee experiences that resonate with the soul of Nepal. From the bustling streets of Kathmandu to the serene landscapes of Pokhara, our diverse range of beverages captures the essence of the Himalayas, hilly terrains, and lush Terai region. Each cup of Basnyat Brew's coffee is a blend that roars with the spirit of Nepal, offering a rich tapestry of flavors and aromas that awaken the senses and warm the heart.
+
+Our Company:
+
+Basnyat Brew is more than just a coffee company; it is a journey of discovery and connection. With a dedication to excellence at every step, we take pride in delivering coffee of exceptional quality, meticulously sourced from the finest regions of Nepal. Our beans undergo rigorous selection and roasting processes to preserve their unique flavors and aromas, resulting in a consistently rich and satisfying brew.
+
+Driven by a commitment to sustainability and social responsibility, Basnyat Brew works closely with local farmers and cooperatives to ensure fair trade practices and support the livelihoods of communities across Nepal. Through our partnerships and initiatives, we strive to empower farmers and promote environmental stewardship, fostering a more equitable and sustainable coffee industry.
+</p>
+          <div class="shop-counts-wrapper">
+            <div class="barista-shop-count">
+              <i class="fa fa-group"></i>
+              <div class="count-number">
+                <span>24</span>
+                <p>Barista</p>
+              </div>
+            </div>
+            <div class="barista-shop-count">
+              <i class="fa fa-coffee"></i>
+              <div class="count-number">
+                <span>6</span>
+                <p>Shop</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+   {% include 'footer.html' %}
+   {% block footer %}
+   {% endblock %}
+    
+  </body>
+</html>

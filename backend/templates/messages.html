@@ -1,0 +1,21 @@
+{% if messages %}
+  <style>
+    .lol {
+      position: absolute;
+      top: 78px;
+      left: 50%;
+      transform: translate(-50%, 0);
+      background-color: #fff;
+      text-wrap: nowrap;
+      color: #eb560c;
+      font-family: catamaran;
+     
+    }
+  </style>
+
+  {% for message in messages %}
+    <div class="lol" role="alert">
+      {{ message }}
+    </div>
+  {% endfor %}
+{% endif %}

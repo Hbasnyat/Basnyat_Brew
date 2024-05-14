@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Basnyat Brew</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+      integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    {% load static %}
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.3.0/css/font-awesome.css"
+    />
+    <link rel="stylesheet" type="text/css" href="{% static 'css/slick.css' %}" />
+    <link rel="stylesheet" type="text/css" href="{% static 'css/slick-theme.css' %}" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Catamaran:wght@100..900&family=Caudex:ital,wght@0,400;0,700;1,400;1,700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/add_to_cart/style.css' %}">
+    <script type="text/javascript" src="{% static 'js/jquery.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/slick.min.js' %}"></script>
+    
+  </head>
+
+  </head>
+  <body>
+    <section class="Hero-section">
+      <div class="topbar">
+      {% include 'navbar.html' %}
+      {% block navbar %}
+      {% endblock %}
+    <section class="productcartsection">
+      <div class="allwrapper container">
+          <div class="producttag">
+              <span>Menu / Drinks / {{ product.name }}</span>
+          </div>
+          <div class="productwrapper">
+              <div class="pdetails">
+                  <h3>{{ product.name }}</h3>
+                  <div class="detailseditor">
+                   
+                      <h4>Customized Recipe</h4>
+                      
+                        
+                      {% if product.milk.all %}
+                      <div class="milkoption">
+                          <p>Milk</p>
+                          <div class="optiondropdown">
+                            <form action="{% url 'add_new_to_cart' product.id %}" method="POST">
+                              {% csrf_token %}
+                                  <ul>
+                                      <select id="milks" name="milks" required>
+                                          {% for milk_option in product.milk.all %}
+                                              <option value="{{ milk_option.name }}">{{ milk_option.name }}</option>
+                                          {% endfor %}
+                                      </select>
+                                  </ul>
+                             
+                          </div>
+                      </div>
+                      {% endif %}
+                      {% if product.flavour.all %}
+                      <div class="flavoroption">
+                          <p>Flavor</p>
+                          <div class="flavorenhancer">
+                              <select id="flavour" name="flavour" required>
+                                  {% for flavour_option in product.flavour.all %}
+                                      <option value="{{ flavour_option.name }}">{{ flavour_option.name }}</option>
+                                  {% endfor %}
+                              </select>
+                          </div>
+                      </div>
+                      {% endif %}
+                      {% if product.sweeteners.all %}
+                      <div class="shotsoption">
+                          <p>Sweetener</p>
+                          <div class="flavorenhancer">
+                              <select id="sweetener" name="sweetener" required>
+                              
+                                  {% for sweetener_option in product.sweeteners.all %}
+                                      <option value="{{ sweetener_option.name }}">{{ sweetener_option.name }}</option>
+                                  {% endfor %}
+                              </select>
+                          </div>
+                      </div>
+                      {% else %}
+                      
+                      <form action="{% url 'add_new_to_cart' product.id %}" method="POST">
+                        {% csrf_token %}
+                      <!-- Quantity Option (Always Shown) -->
+                      {% endif %}
+                      <div class="quantityaddwrapper">
+                          <div class="quantity">
+                              <h5>Quantity</h5>
+                              <div class="count">
+                                  <div class="input-with-buttons">
+                                      <input type="number" id="quantity" name="quantity" value="1" min="0" max="24" required>
+                                  </div> 
+                              </div>
+                          </div>
+                         
+                          <div class="orderBtn">
+                            {% if user.is_authenticated %}
+                            <button type="submit" id="addToCartButton"><span>Add to Cart</span></button>
+                        {% else %}
+                            <a href="{% url 'login' %}?next={{ request.path }}"><span>Add to Cart</span></a>
+                        {% endif %}
+                        
+                              <span class="add-to-cart-message"></span>
+                          </div>
+                      </div>
+                     
+                  </div>
+              </div>
+              <div class="produtimgwrapper">
+                  <div class="productimg">
+                      <img src="{{ product.image.url }}" alt="{{ product.name }}">
+                  </div>
+                  <!-- Show Size Options only if flavors are available -->
+                  {% if product.flavour.all %}
+                  <div class="productsize">
+                      <h4>Size Options</h4>
+                      <div class="sizeslist">
+                          <div class="size">
+                              <div class="siz">
+                                  {% for size in cup_sizes %}
+                                  <li class="{% if forloop.first %}active{% endif %}" data-value="{{ size.name }}">
+                                      <div class="size-1">
+                                          <span>{{ size.name }}</span>
+                                          <span>{{ size.volume }} fl oz</span>
+                                      </div>
+                                  </li>
+                                  <input type="hidden" id="cup_size_input" name="cup_size" value="Sano(S)">
+
+
+                                  {% endfor %}
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+                  {% endif %}
+              </div>
+          </div>
+      </div>
+    </form>
+  
+  
+        
+        <script>
+          document.addEventListener('DOMContentLoaded', function () {
+    // When the DOM content is fully loaded
+    var lis = document.querySelectorAll('.sizeslist li');
+    // Select all list items within the .sizeslist element
+    lis.forEach(function(li) {
+        // For each list item
+        li.addEventListener('click', function() {
+            // Add a click event listener
+            lis.forEach(function(item) {
+                // Loop through all list items
+                item.classList.remove('active');
+                // Remove 'active' class from all list items
+            });
+            this.classList.add('active');
+            // Add 'active' class to the clicked list item
+            var selectedCupSize = this.getAttribute('data-value');
+            // Get the value of 'data-value' attribute from the clicked list item
+            document.getElementById('cup_size_input').value = selectedCupSize;
+            console.log("Selected cup size:", selectedCupSize);
+
+            // Update the value of the input field with the selected cup size
+        });
+    });
+});
+
+      </script>
+      
+                
+                
+                
+              </div>
+            </div>
+          </div>
+         
+        </div>
+    </section>
+    <section class="description">
+      <div class="descripwrapper container">
+        <div class="dlinks">
+          <ul>
+            <li id="description-tab" class="active">Description</li>
+          </ul>
+        </div>
+        <div class="contents">
+          <div id="description-content" class="descriptioncontent active">
+            <span>{{ product.description }}</span>
+          </div>
+        </div>
+      </div>
+      
+    </section>
+    <section class="relatedproducts">
+      <div class="relatedwrapper container">
+        <h3>Related Products</h3>
+        <div class="tealist contentlist" style="display: block;">
+          <ul>
+            {% for related_product in related_products %}
+            <li>
+              <div class="maincontents">
+                <div class="content-img">
+                  <img src="{{ related_product.image.url }}" alt="{{ related_product.name }}">
+                  <div class="orderbtn">
+                    <a href="{% url 'select_quantity' related_product.id %}">Order now</a>
+                  </div>
+                </div>
+                <div class="contenthead">
+                  <h5>{{ related_product.name }}</h5>
+                  <p>{{ related_product.shortdescription }}</p>
+                  <span>${{ related_product.dollarprice }}/{{ related_product.price }}</span>
+                </div>
+              </div>
+            </li>
+            {% endfor %}
+          </ul>
+        </div>
+      </div>
+    </section>
+    
+  
+
+        </ul>
+      </div>
+     </div>
+    </section>
+ {% include 'footer.html' %}
+ {% block footer %}
+ {% endblock %}
+</html>

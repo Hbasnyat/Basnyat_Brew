@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Basnyat Brew</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+      integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+   
+    {% load static %}
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.3.0/css/font-awesome.css"
+    />
+    <link rel="stylesheet" type="text/css" href="{% static 'css/slick.css' %}" />
+    <link rel="stylesheet" type="text/css" href="{% static 'css/slick-theme.css' %}" />
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Catamaran:wght@100..900&family=Caudex:ital,wght@0,400;0,700;1,400;1,700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}" />
+    <script type="text/javascript" src="{% static 'js/jquery.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/slick.min.js' %}"></script>
+  </head>
+  <body>
+    <section class="Hero-section">
+      <div class="banner">
+        <div class="banner-image-slider">
+          <div class="banner-1">
+            <div class="banner-image">
+              <img src="{% static 'images/assets/homepage/bannerupdated.jpg' %}" width="100%" height="100%" alt="">
+              <div class="banneroverlay"></div>
+              </div>
+            <div class="banner-text">
+              <h1 class="slide-text">In Basnyat Brew You Can Find Coffee For Everyones Taste, Made With Love. </h1>
+              <div class="orderBtn animatebtn">
+                <a href="{% url 'location_selection' %}"><span>order your brew</span></a>
+                <span></span>
+              </div>
+          </div>
+          </div>
+          <div class="banner-1">
+            <div class="banner-image">
+              <img src="{% static 'images/assets/homepage/bannerupdated2.jpg' %}" width="100%" height="100%" alt="">
+              <div class="banneroverlay"></div>
+              </div>
+            <div class="banner-text">
+              <h1 class="slide-text">Discover Our Special Nepali Brews - Crafted With Passion</h1>
+              <div class="orderBtn animatebtn">
+                <a href="{% url 'location_selection' %}"><span>order your brew</span></a>
+                <span></span>
+              </div>
+          </div>
+          </div>
+          <div class="banner-1">
+            <div class="banner-image">
+              <img src="{% static 'images/assets/homepage/homebanner2.jpeg' %}" width="100%" height="100%" alt="">
+              <div class="banneroverlay"></div>
+              </div>
+            <div class="banner-text">
+              <h1 class="slide-text">Experience Pure Nepali Coffee Bliss - Indulge in Basnyat Brews. </h1>
+              <div class="orderBtn animatebtn">
+                <a href="{% url 'location_selection' %}"><span>order your brew</span></a>
+                <span></span>
+              </div>
+          </div>
+          </div>
+
+        </div>
+    <div class="next-prev-btn">
+      <div class="prevbtn"><img src="{% static 'images/assets/icons/left arrow.svg' %}" alt=""></div>
+      <div class="nextbtn"><img src="{% static 'images/assets/icons/right arrow.svg' %}" alt=""></div>
+    </div>
+  </div>
+  <script>
+ function animateFirstSlide() {
+      $('.slide-text').eq(0).addClass('animate-slide');
+      setTimeout(function() {
+        $('.animatebtn').eq(0).addClass('animate-slide');
+      }, 500); // Adjust the delay as needed
+    }
+  
+    $('.banner-image-slider').on('afterChange', function(event, slick, currentSlide) {
+      $('.slide-text').removeClass('animate-slide');
+      $('.orderBtn').removeClass('animate-slide');
+      setTimeout(function() {
+        $('.slide-text').eq(currentSlide).addClass('animate-slide');
+      }, 300);
+      setTimeout(function() {
+        $('.animatebtn').eq(currentSlide).addClass('animate-slide');
+      }, 150); // Adjust the delay as needed
+    });
+  
+    $('.banner-image-slider').on('init', function(event, slick) {
+      animateFirstSlide();
+    });
+  
+    $('.banner-image-slider').slick({
+      dots: false,
+      infinite: true,
+      speed: 500,
+      fade: true,
+      cssEase: 'linear',
+      autoplay: true,
+      slidesToShow: 1,
+      slidesToScroll: 1,
+    });
+  
+    $('.prevbtn').click(function() {
+      $('.banner-image-slider').slick('slickPrev');
+    });
+  
+    $('.nextbtn').click(function() {
+      $('.banner-image-slider').slick('slickNext');
+    });
+  </script>
+      </div>
+          
+      <div class="topbar">
+        <div class="announcement">
+          <ul class="offer-contact-wrapper container">
+            <li>
+              <a href="#">Contact: 01 2 312 9824</a>
+            </li>
+            <li>
+              <span class="join-p">Join the Basnyat Brew Coffee club! <a class="sign-in" href="{% url 'register' %}">Sign Up Today</a></span>
+            </li>
+            <div class="links">
+              <ul>
+                <li>
+                  <a href="#"><img src="{% static 'images/assets/icons/fb logo.svg' %}" height="16px" width="9px"/></a>
+                </li>
+
+                <li>
+                  <a href="#"><img src="{% static 'images/assets/icons/twitter.svg' %}" height="16px" width="16px"/></i></a>
+                </li>
+                <li>
+                  <a href="#"><i class="fa-brands fa-instagram"></i></i></a>
+                </li>
+              </ul>
+            </div>
+          </ul>
+        </div>
+           
+            {% include 'navbar.html' %}
+            {% block navbar %}{% endblock %}
+            <style>
+              .lol{
+                top: 100px;
+                padding: 8px 16px;
+              }
+            </style>
+            <section class="about-us-section">
+              <div class="about-us-wrapper container">
+                <div class="about-us-text">
+                  <div class="text-head">
+                    <h2>Quality coffee</h2>
+                  </div>
+                  <div class="about-paragraph">
+                    <p>Basnyat Brew takes pride in delivering coffee of exceptional quality, meticulously
+                      sourced from the finest regions of Nepal. Our beans undergo rigorous selection and
+                      roasting processes to preserve their unique flavors and aromas, resulting in a
+                      consistently rich and satisfying brew. With a dedication to excellence at every step,
+                       Basnyat Brew guarantees a truly memorable coffee experience with every sip.</p>
+                  </div>
+                  <div class="orderBtn">
+                    <a href="{% url 'about' %}"><span>about us</span></a>
+                    <span></span>
+                  </div>
+                </div>
+                <div class="about-us-image">
+                  <img src="{% static 'images/assets/homepage/about us image.png' %}" alt="">
+                </div>
+              </div>
+            </section>
+            <section class="product-showcase-section">
+              <div class="product-wrapper">
+                <div class="product-1">
+                  <div class="productImg">
+                    <img src="{% static 'images/assets/homepage/image 4.png' %}" alt="">
+                  </div>
+                  <div class="divider">
+                    <img src="{% static 'images/assets/homepage/line 1.png' %}" alt="">
+                  </div>
+                  <div class="product-text">
+                    <h2>EMBRACE THE ESSENCE OF NEPAL IN EVERY CUP</h2>
+                    <p>Indulge in Basnyat Brew’s coffee, a blend that roars with the spirit of Nepal, capturing the
+                      essence of the Himalayas, hilly terrains, and lush Terai region. With every sip, experience the rich
+                      tapestry of Nepali culture and heritage encapsulated within our coffee.”</p>
+                      <div class="orderBtn">
+                        <a href="{% url 'location_selection' %}"><span>order now</span></a>
+                        <span></span>
+                      </div>
+                  </div>
+                </div>
+                <div class="product-1 ps-2">
+                  <div class="product-text">
+                    <h2>EMBRACE THE ESSENCE OF NEPAL IN EVERY CUP</h2>
+                    <p>Indulge in Basnyat Brew’s coffee, a blend that roars with the spirit of Nepal, capturing the
+                      essence of the Himalayas, hilly terrains, and lush Terai region. With every sip, experience the rich
+                      tapestry of Nepali culture and heritage encapsulated within our coffee.”</p>
+                      <div class="orderBtn">
+                        <a href="{% url 'location_selection' %}"><span>order now</span></a>
+                        <span></span>
+                      </div>
+                  </div>
+                  <div class="divider">
+                    <img src="{% static 'images/assets/homepage/line 2.png' %}" alt="">
+                  </div>
+                  <div class="productImg">
+                    <img src="{% static 'images/assets/homepage/image 5.png' %}" width="100%" alt="">
+                  </div>
+                 
+                </div>
+              </div>
+            </section>
+            <section class="testimonial-section">
+              <div class="testimonial-head">
+                <h2>CLIENT TESTIMONIALS</h2>
+                <p>Basnyat Brew's diverse range of beverages caters to every taste, ensuring each customer finds
+                  their perfect cup that satisfies their cravings and elevates their day.</p>
+              </div>
+              <div class="testimonial-slider">
+                <div class="testimonial1 t-1">
+                  <h3>"</h3>
+                  <p>The richness of the spices combined with the smoothness of the milk creates a truly indulgent
+                    beverage that I look forward to enjoying every morning.</p>
+                    <div class="user-detail">
+                      <div class="username">
+                        <h5>Maya K.C.,</h5>
+                        <span>Kathmandu</span>
+                      </div>
+                      <div class="user-image">
+                        <img src="{% static 'images/assets/homepage/userimage.png' %}" alt="">
+                      </div>
+                    </div>
+                </div>
+                <div class="testimonial1 t-2">
+                  <h3>"</h3>
+                  <p>Basnyat Brew’s Black Masala Tea is a delightful blend of flavors that instantly transports me to
+                    the bustling streets of Kathmandu.  the perfect balance of spices and sweetness, making
+                    every sip a comforting experience.</p>
+                    <div class="user-detail">
+                      <div class="username">
+                        <h5>Maya K.C.,</h5>
+                        <span>Kathmandu</span>
+                      </div>
+                      <div class="user-image">
+                        <img src="{% static 'images/assets/homepage/userimage.png' %}" alt="">
+                      </div>
+                    </div>
+                </div>
+                <div class="testimonial1 t-3">
+                  <h3>"</h3>
+                  <p>Basnyat Brew’s Newari Coffee is a revelation! It’s not just a drink .it is an experience that
+                    awakens my senses and brings warmth to my soul.</p>
+                    <div class="user-detail">
+                      <div class="username">
+                        <h5>Maya K.C.,</h5>
+                        <span>Kathmandu</span>
+                      </div>
+                      <div class="user-image">
+                        <img src="{% static 'images/assets/homepage/userimage.png' %}" alt="">
+                      </div>
+                    </div>
+                </div>
+              </div>
+              <div class="next-prev-btn">
+                <div class="prevbtn"><img src="{% static 'images/assets/icons/left arrow.svg' %}" alt=""></div>
+                <div class="nextbtn"><img src="{% static 'images/assets/icons/right arrow.svg' %}" alt=""></div>
+              </div>
+            </section>
+    {% include 'footer.html' %}
+    {% block footer %}{% endblock %}
+    <script type="text/javascript" src="{% static 'js/main.js' %}"></script>
+
+  </body>
+</html>

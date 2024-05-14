@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Basnyat Brew</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+      integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    {% load static %}
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.3.0/css/font-awesome.css"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Catamaran:wght@100..900&family=Caudex:ital,wght@0,400;0,700;1,400;1,700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/menu/style.css' %}">
+    
+  </head>
+  <body>
+    <section class="Hero-section">
+      <div class="topbar">
+    {% include 'navbar.html' %} 
+    {% block navbar %}
+    {% endblock %}
+    <section class="menuwrapper container">
+      <div class="categorylistwrapper">
+        <h2>Menu</h2>
+        <div class="categoryfilter">
+          <div class="categorylist">
+            <ul>
+              <li class="category main-active" onclick="showContent('drinks')">Drinks</li>
+              <li class="category" onclick="showContent('foods')">Foods</li>
+              <li class="category" onclick="showContent('snacks')">Snacks</li>
+            </ul>
+          </div>
+        </div>     
+      </div>
+      <div class="contentsubcategorywrapper">
+        <div class="categorycontent">
+          <div class="options drinks active" id="drinks">
+            <ul>
+              <li class="subcategory sub-active" onclick="showSubContent('tea')">Tea</li>
+              <li class="subcategory" onclick="showSubContent('coffee')">Coffee</li>
+            </ul>
+            <div class="sub-contents">
+              <div class="tealist contentlist content-active" id="tea">
+                <ul>
+                  {% for category in categories_with_drinks %}
+                  {% if category.name == 'Tea' %}
+                    {% for drink in category.drinks.all %}
+                      <li>
+                        <div class="maincontents">
+                          <div class="content-img">
+                            <img src="{{ drink.image.url }}" alt="{{ drink.name }}">
+                            <div class="orderbtn"><a href="{% url 'select_quantity' drink.id %}">Order now</a></div>
+                          </div>
+                          <div class="contenthead">
+                            <h5>{{ drink.name }}</h5>
+                            <p>{{ drink.shortdescription }}</p>
+                            <span>${{ drink.dollarprice }}/Rs.{{ drink.price }}</span>
+                          </div>
+                        </div>
+                      </li>
+                   
+                    {% endfor %}
+                  {% endif %}
+                {% endfor %}
+           
+                </ul>
+              </div>
+              <div class="coffeelist contentlist" id="coffee">
+                <ul>
+                {% for category in categories_with_drinks %}
+                {% if category.name == 'coffee' %}
+                {% for drink in category.drinks.all %}
+                <li>
+                  <div class="maincontents">
+                    <div class="content-img">
+                      <img src="{{ drink.image.url }}" alt="{{ drink.name }}">
+                      <div class="orderbtn"><a href="{% url 'select_quantity' drink.id %}">Order now</a></div>
+                    </div>
+                    <div class="contenthead">
+                      <h5>{{ drink.name }}</h5>
+                      <p>{{ drink.shortdescription }}</p>
+                        <span>${{ drink.dollarprice }}/Rs.{{ drink.price }}</span>
+                    </div>
+                </div>
+                </li>
+                   
+                {% endfor %}
+                {% endif %}
+              {% endfor %}
+                </ul>
+              </div>
+            </div>
+          </div>
+          <div class="options foods" id="foods">
+            <ul>
+              <li class="subcategory sub-active" onclick="showSubContent('choumin')">Choumin</li>
+              <li class="subcategory" onclick="showSubContent('momo')">Momo</li>
+            </ul>
+            <div class="sub-contents">
+              <div class="chouminlist contentlist content-active" id="choumin">
+                <ul> 
+                  {% for category in categories_with_drinks %}
+                  {% if category.name == 'chowmin' %}
+                  {% for drink in category.drinks.all %}
+                  <li>
+                    <div class="maincontents">
+                      <div class="content-img">
+                        <img src="{{ drink.image.url }}" alt="{{ drink.name }}">
+                        <div class="orderbtn"><a href="{% url 'select_quantity' drink.id %}">Order now</a></div>
+                      </div>
+                      <div class="contenthead">
+                        <h5>{{ drink.name }}</h5>
+                        <p>{{ drink.shortdescription }}</p>
+                          <span>${{ drink.dollarprice }}/Rs.{{ drink.price }}</span>
+                      </div>
+                  </div>
+                  </li>
+                     
+                  {% endfor %}
+                  {% endif %}
+                {% endfor %}
+                 
+                </ul>
+              </div>
+              <div class="momolist contentlist" id="momo">
+                <ul> 
+                  {% for category in categories_with_drinks %}
+                  {% if category.name == 'momo' %}
+                  {% for drink in category.drinks.all %}
+                  <li>
+                    <div class="maincontents">
+                      <div class="content-img">
+                        <img src="{{ drink.image.url }}" alt="{{ drink.name }}">
+                        <div class="orderbtn"><a href="{% url 'select_quantity' drink.id %}">Order now</a></div>
+                      </div>
+                      <div class="contenthead">
+                        <h5>{{ drink.name }}</h5>
+                        <p>{{ drink.shortdescription }}</p>
+                          <span>${{ drink.dollarprice }}/Rs.{{ drink.price }}</span>
+                      </div>
+                  </div>
+                  </li>
+                     
+                  {% endfor %}
+                  {% endif %}
+                {% endfor %}
+                  </ul>
+              </div>
+            </div>
+          </div>
+          <div class="options snacks" id="snacks">
+            <ul>
+              <li class="subcategory sub-active" onclick="showSubContent('Pizza')">Pizza</li>
+              <li class="subcategory" onclick="showSubContent('Burger')">Burger</li>
+            </ul>
+            <div class="sub-contents">
+              <div class="Pizzalist contentlist content-active" id="Pizza" >
+                <ul> 
+                  {% for category in categories_with_drinks %}
+                  {% if category.name == 'pizza' %}
+                  {% for drink in category.drinks.all %}
+                  <li>
+                    <div class="maincontents">
+                      <div class="content-img">
+                        <img src="{{ drink.image.url }}" alt="{{ drink.name }}">
+                        <div class="orderbtn"><a href="{% url 'select_quantity' drink.id %}">Order now</a></div>
+                      </div>
+                      <div class="contenthead">
+                        <h5>{{ drink.name }}</h5>
+                        <p>{{ drink.shortdescription }}</p>
+                          <span>${{ drink.dollarprice }}/Rs.{{ drink.price }}</span>
+                      </div>
+                  </div>
+                  </li>
+                     
+                  {% endfor %}
+                  {% endif %}
+                {% endfor %}
+                  </ul>
+              </div>
+              <div class="Burgerlist contentlist" id="Burger" >
+                <ul> 
+                  {% for category in categories_with_drinks %}
+                  {% if category.name == 'Burger' %}
+                  {% for drink in category.drinks.all %}
+                  <li>
+                    <div class="maincontents">
+                      <div class="content-img">
+                        <img src="{{ drink.image.url }}" alt="{{ drink.name }}">
+                        <div class="orderbtn"><a href="{% url 'select_quantity' drink.id %}">Order now</a></div>
+                      </div>
+                      <div class="contenthead">
+                        <h5>{{ drink.name }}</h5>
+                        <p>{{ drink.shortdescription }}</p>
+                          <span>${{ drink.dollarprice }}/Rs.{{ drink.price }}</span>
+                      </div>
+                  </div>
+                  </li>
+                     
+                  {% endfor %}
+                  {% endif %}
+                {% endfor %}
+              </div>
+            </div>
+          </div>      
+       
+        </div>
+        <div class="path">
+          <p class="active"></p>
+      </div> 
+        </div>
+        <script>
+          document.addEventListener("DOMContentLoaded", function(event) {
+              updatePath();
+          });
+      
+          function updatePath() {
+              var activeElement = document.querySelector('.options.active');
+              var subActiveElement = activeElement.querySelector('.sub-contents > div.content-active');
+              var pathElement = document.querySelector('.path p');
+      
+              var activeId = activeElement.id;
+              var subActiveId = subActiveElement ? subActiveElement.id : '';
+      
+              var activeText = activeId + (subActiveId ? '/' + subActiveId : '');
+      
+              pathElement.textContent = activeText;
+          }
+      
+          function showContent(category) {
+              // Hide all content divs
+              var contentDivs = document.querySelectorAll('.options');
+              contentDivs.forEach(function(div) {
+                  div.classList.remove('active');
+              });
+      
+              // Show the selected content div
+              var selectedDiv = document.getElementById(category);
+              selectedDiv.classList.add('active');
+      
+              // Remove 'main-active' class from all category list items
+              var categoryItems = document.querySelectorAll('.category');
+              categoryItems.forEach(function(item) {
+                  item.classList.remove('main-active');
+              });
+      
+              // Add 'main-active' class to the clicked category list item
+              var clickedCategory = document.querySelector('.category[onclick="showContent(\'' + category + '\')"]');
+              clickedCategory.classList.add('main-active');
+      
+              // Remove 'sub-active' class from all subcategory list items
+              var subCategoryItems = document.querySelectorAll('.subcategory');
+              subCategoryItems.forEach(function(item) {
+                  item.classList.remove('sub-active');
+              });
+      
+              // Add 'sub-active' class to the first subcategory list item
+              var firstSubCategory = selectedDiv.querySelector('.subcategory');
+              firstSubCategory.classList.add('sub-active');
+      
+              // Remove 'content-active' class from all content lists
+              var contentLists = document.querySelectorAll('.sub-contents > div');
+              contentLists.forEach(function(list) {
+                  list.classList.remove('content-active');
+              });
+      
+              // Add 'content-active' class to the first subcategory's content list
+              var firstContentList = selectedDiv.querySelector('.sub-contents > div');
+              firstContentList.classList.add('content-active');
+      
+              updatePath();
+          }
+      
+          function showSubContent(subCategory) {
+              // Hide all sub-content divs
+              var subContentDivs = document.querySelectorAll('.sub-contents > div');
+              subContentDivs.forEach(function(div) {
+                  div.classList.remove('content-active');
+              });
+      
+              // Show the selected sub-content div
+              var selectedSubDiv = document.getElementById(subCategory);
+              selectedSubDiv.classList.add('content-active');
+      
+              // Remove 'sub-active' class from all subcategory list items
+              var subCategoryItems = document.querySelectorAll('.subcategory');
+              subCategoryItems.forEach(function(item) {
+                  item.classList.remove('sub-active');
+              });
+      
+              // Add 'sub-active' class to the clicked subcategory list item
+              var clickedSubCategory = document.querySelector('.subcategory[onclick="showSubContent(\'' + subCategory + '\')"]');
+              clickedSubCategory.classList.add('sub-active');
+      
+              updatePath();
+          }
+      </script> 
+    {% include 'footer.html' %}
+    {% block footer %}
+    {% endblock %}
+    <script type="text/javascript" src="../../main.js"></script>
+  </body>
+</html>
