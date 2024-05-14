@@ -26,7 +26,7 @@ SECRET_KEY = 'django-insecure-@qc5tys7&5#lcs#5y7x(yy1z5sx7m)n^4xwlsuf4h1mr%z*eee
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["*"]
 
 LOGIN_URL = '/login/'
 
@@ -87,9 +87,9 @@ DATABASES = {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'railway',
         'USER': 'root',
-        'PASSWORD': 'COmPfmgpjrKaBXWtUGBqWiDwDkYyfAXF',
-        'HOST': 'roundhouse.proxy.rlwy.net',  # Or your MySQL server's IP address
-        'PORT': '38332',       # MySQL's default port is 3306
+        'PASSWORD': 'TwmJJQUwNivpmiBxjGJhLgVCxhxoHgpu',
+        'HOST': 'monorail.proxy.rlwy.net',  # Or your MySQL server's IP address
+        'PORT': '31305',       # MySQL's default port is 3306
     }
 }
 
@@ -144,7 +144,7 @@ EMAIL_USE_TLS = True
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
-STRIPE_TEST_SECRET_KEY = 'sk_test_51OofoHKFzAzARWCsoT0pG0RXnh9lDKFvpV9BtTEQUGD9dg9gx3r4vKcvrczl5gKA6PA5dmH3MfgF9nGRJD5fq5ii002UlscmbH'
+STRIPE_TEST_SECRET_KEY = 'sk_test_51PFhhADniBhvhQufhYZt6xbqr7RLKY0EbjJjjxyTtwpxdcYb0Ob6seSb8U424zteSNb95jT2pavlc5xD9UrjkO4z00DlMttRKW'
 SILENCED_SYSTEM_CHECKS = [
     'models.W036',
     'models.W043',
