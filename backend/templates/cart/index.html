@@ -28,7 +28,8 @@
     <link rel="stylesheet" href="../../static/css/cart/style.css">
     <script type="text/javascript" src="{% static 'js/jquery.min.js' %}"></script>
     <script type="text/javascript" src="{% static 'js/slick.min.js' %}"></script>
-    
+    {% load custom_filters %}
+
   </head>
   <body>
     <section class="Hero-section">
@@ -109,7 +110,18 @@
                               <input type="hidden" name="sweetener" value="{{ item.sweetener }}">
                               <input type="hidden" name="cup_size" value="{{ item.cup_size }}">
                       <ul class="pricecontentwrapper">
+                        {% if item.cup_size == 'Sano(S)' %}
                         <li id="price">${{ item.product.dollarprice }}</li>
+                    {% elif item.cup_size == 'Thikkako(M)' %}
+                        <li id="price">${{ item.product.dollarprice|multiply:2 }}</li>
+                    {% elif item.cup_size == 'Thulo(L)' %}
+                        <li id="price">${{ item.product.dollarprice|multiply:3 }}</li>
+                    {% else %}
+                    <li id="price">${{ item.product.dollarprice }}</li>
+                    {% endif %}
+
+                    
+
                         <button type="submit" class="plusicon" id="quantity" >+</button>
                         <li id="total">${{ item.total_quantity }}</li>
                       </ul>

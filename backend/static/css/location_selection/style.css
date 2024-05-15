@@ -1,238 +1,238 @@
 .Hero-section .topbar {
-    position: initial;
-  }
-  .Hero-section .topbar .navWrapper {
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  }
-  .Hero-section .topbar .navWrapper .navbar .logo img {
-    filter: invert(1);
-  }
-  .Hero-section .topbar .navWrapper .navbar .navigationWrapper ul li a {
-    color: #363636;
-  }
-  .Hero-section .topbar .navWrapper .navbar .navigationWrapper ul li a:after {
-    background-color: #363636;
-  }
-  .Hero-section .topbar .navWrapper .navbar .navigationWrapper ul li:first-child a::after {
-    transform: scaleX(0);
-  }
-  .Hero-section .topbar .navWrapper .navbar .navigationWrapper ul li:hover:first-child a::after {
-    transform: scaleX(1);
-  }
-  .Hero-section .topbar .navWrapper .navbar .navigationWrapper ul li:nth-child(4) a::after {
-    transform: scaleX(1);
-  }
-  .Hero-section .topbar .navWrapper .navbar .cart-menuWrapper ul li img {
-    filter: invert(1);
-  }
-  .Hero-section .topbar .navWrapper .navbar .cart-menuWrapper ul li .nav-icon1 span,   .Hero-section .topbar .navWrapper .navbar .cart-menuWrapper ul li .nav-icon2 span {
-    background-color: #363636;
-  }
-  .Hero-section .topbar .navWrapper .navbar .cart-menuWrapper ul .searchIcon a {
-    color: #363636;
-    font-weight: 600;
-  }
-  .Hero-section .topbar .navWrapper .navbar .cart-menuWrapper ul .searchIcon a::after {
-    background-color: #363636;
-  }
-  .Hero-section .topbar .navWrapper .navbar .cart-menuWrapper ul .searchIcon a:hover ::after {
-    transform: scale(1);
-  }
-  
+  position: initial;
+}
+.Hero-section .topbar .navWrapper {
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+.Hero-section .topbar .navWrapper .navbar .logo img {
+  filter: invert(1);
+}
+.Hero-section .topbar .navWrapper .navbar .navigationWrapper ul li a {
+  color: #363636;
+}
+.Hero-section .topbar .navWrapper .navbar .navigationWrapper ul li a:after {
+  background-color: #363636;
+}
+.Hero-section .topbar .navWrapper .navbar .navigationWrapper ul li:first-child a::after {
+  transform: scaleX(0);
+}
+.Hero-section .topbar .navWrapper .navbar .navigationWrapper ul li:hover:first-child a::after {
+  transform: scaleX(1);
+}
+.Hero-section .topbar .navWrapper .navbar .navigationWrapper ul li:nth-child(4) a::after {
+  transform: scaleX(1);
+}
+.Hero-section .topbar .navWrapper .navbar .cart-menuWrapper ul li img {
+  filter: invert(1);
+}
+.Hero-section .topbar .navWrapper .navbar .cart-menuWrapper ul li .nav-icon1 span,   .Hero-section .topbar .navWrapper .navbar .cart-menuWrapper ul li .nav-icon2 span {
+  background-color: #363636;
+}
+.Hero-section .topbar .navWrapper .navbar .cart-menuWrapper ul .searchIcon a {
+  color: #363636;
+  font-weight: 600;
+}
+.Hero-section .topbar .navWrapper .navbar .cart-menuWrapper ul .searchIcon a::after {
+  background-color: #363636;
+}
+.Hero-section .topbar .navWrapper .navbar .cart-menuWrapper ul .searchIcon a:hover ::after {
+  transform: scale(1);
+}
+
+.mapsection .mapwrapper {
+  display: flex;
+  justify-content: space-between;
+  margin: 0 auto;
+  height: 80vh;
+}
+.mapsection .mapwrapper .locationwrapper {
+  padding-top: 28px;
+  flex: 2.5;
+}
+.mapsection .mapwrapper .locationwrapper .loactionhead h3 {
+  font-size: 32px;
+  font-family: var(--primary-font);
+  color: var(--primary-color);
+  letter-spacing: 2px;
+}
+.mapsection .mapwrapper .locationwrapper .locationlist {
+  margin-top: 28px;
+  height: 70vh;
+  overflow-y: scroll;
+}
+.mapsection .mapwrapper .locationwrapper .locationlist ul {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.mapsection .mapwrapper .locationwrapper .locationlist ul li {
+  position: relative;
+  padding: 16px;
+  margin-right: 20px;
+  border-radius: 8px;
+}
+.mapsection .mapwrapper .locationwrapper .locationlist ul li .location-1 {
+  display: flex;
+  align-items: self-end;
+  justify-content: space-between;
+}
+.mapsection .mapwrapper .locationwrapper .locationlist ul li .location-1 .locationdetail {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+.mapsection .mapwrapper .locationwrapper .locationlist ul li .location-1 .locationdetail h4 {
+  font-size: 16px;
+  font-family: var(--secondary-font);
+  letter-spacing: 1.5px;
+  font-weight: 500;
+}
+.mapsection .mapwrapper .locationwrapper .locationlist ul li .location-1 .locationdetail p {
+  font-size: 15px;
+  letter-spacing: 1px;
+  font-family: var(--secondary-font);
+  font-weight: 500;
+}
+.mapsection .mapwrapper .locationwrapper .locationlist ul li .location-1 .locationdetail span {
+  font-size: 14px;
+  font-family: var(--secondary-font);
+  color: #0B5E1E;
+  font-weight: 500;
+}
+.mapsection .mapwrapper .locationwrapper .locationlist ul li .location-1 .locationdetail h5 {
+  font-size: 16px;
+  letter-spacing: 1px;
+  font-weight: 400;
+  font-family: var(--secondary-font);
+}
+.mapsection .mapwrapper .locationwrapper .locationlist ul li .location-1 .orderbtn {
+  border: 1px solid var(--primary-color);
+  padding: 6px 11px;
+  border-radius: 25px;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+.mapsection .mapwrapper .locationwrapper .locationlist ul li .location-1 .orderbtn span {
+  font-size: 14px;
+  font-family: var(--secondary-font);
+  color: var(--primary-color);
+  font-weight: 500;
+  letter-spacing: 1.5px;
+}
+.mapsection .mapwrapper .locationwrapper .locationlist ul li .location-1 .orderbtn:hover {
+  background-color: var(--primary-color);
+}
+.mapsection .mapwrapper .locationwrapper .locationlist ul li .location-1 .orderbtn:hover span {
+  color: #fff;
+}
+.mapsection .mapwrapper .locationwrapper .locationlist ul li::after {
+  background-color: #c3c3c3;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  content: "";
+  width: 100%;
+  height: 1px;
+}
+.mapsection .mapwrapper .locationwrapper .locationlist ul li.active {
+  background-color: rgba(217, 106, 26, 0.0666666667);
+}
+.mapsection .mapwrapper .allmap {
+  flex: 4;
+  position: relative;
+  z-index: 1;
+}
+.mapsection .mapwrapper .allmap .leaflet-container {
+  height: 100% !important;
+}
+.mapsection .mapwrapper .allmap .leaflet-container .leaflet-control-container .leaflet-top:nth-child(2) {
+  right: 50% !important;
+  top: 20px !important;
+  transform: translate(50%, 0);
+}
+.mapsection .mapwrapper .allmap .leaflet-container .leaflet-control-container .leaflet-top:nth-child(2) .leaflet-bar {
+  border: none;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.mapsection .mapwrapper .allmap .search-btn {
+  display: flex;
+  gap: 20px;
+  position: absolute;
+  left: 50%;
+  top: 16px;
+  transform: translate(-50%, 0);
+  display: flex;
+  align-items: center;
+  z-index: 999;
+}
+.mapsection .mapwrapper .allmap .search-btn input {
+  width: 248px;
+  justify-content: space-between;
+  display: flex;
+  padding: 8px 28px;
+  background-color: #fff;
+  border-radius: 25px;
+  border: 1px solid transparent;
+  align-items: center;
+  border: none;
+  font-family: var(--secondary-font);
+  letter-spacing: 1px;
+  font-size: 15px;
+  color: #4e4e4e;
+  border: 1px solid var(--primary-color);
+}
+.mapsection .mapwrapper .allmap .search-btn input:focus {
+  outline: none;
+}
+.mapsection .mapwrapper .allmap .search-btn button {
+  background-color: #fff;
+  border: 1px solid var(--primary-color);
+  color: var(--primary-color);
+  font-weight: 600;
+  padding: 8px 24px;
+  border-radius: 36px;
+  font-size: 15px;
+  letter-spacing: 1px;
+  font-family: var(--secondary-font);
+  transition: all 0.3s;
+  cursor: pointer;
+}
+.mapsection .mapwrapper .allmap .search-btn button:hover {
+  background: var(--primary-color);
+  color: #fff;
+  border: 1px solid transparent;
+}
+
+@media only screen and (max-width: 1000px) {
   .mapsection .mapwrapper {
-    display: flex;
-    justify-content: space-between;
-    margin: 0 auto;
-    height: 80vh;
+    flex-direction: column-reverse;
   }
-  .mapsection .mapwrapper .locationwrapper {
-    padding-top: 28px;
-    flex: 2.5;
+  .locationlist {
+    height: 40vh !important;
   }
-  .mapsection .mapwrapper .locationwrapper .loactionhead h3 {
-    font-size: 32px;
-    font-family: var(--primary-font);
-    color: var(--primary-color);
-    letter-spacing: 2px;
+  .mapsection .mapwrapper .locationwrapper .locationlist li {
+    margin: 0 !important;
   }
-  .mapsection .mapwrapper .locationwrapper .locationlist {
-    margin-top: 28px;
-    height: 70vh;
-    overflow-y: scroll;
+  .mapsection .mapwrapper .allmap #map {
+    height: 300px !important;
   }
-  .mapsection .mapwrapper .locationwrapper .locationlist ul {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-  }
-  .mapsection .mapwrapper .locationwrapper .locationlist ul li {
-    position: relative;
-    padding: 16px;
-    margin-right: 20px;
-    border-radius: 8px;
-  }
-  .mapsection .mapwrapper .locationwrapper .locationlist ul li .location-1 {
-    display: flex;
-    align-items: self-end;
-    justify-content: space-between;
-  }
-  .mapsection .mapwrapper .locationwrapper .locationlist ul li .location-1 .locationdetail {
-    display: flex;
-    flex-direction: column;
-    gap: 5px;
-  }
-  .mapsection .mapwrapper .locationwrapper .locationlist ul li .location-1 .locationdetail h4 {
-    font-size: 16px;
-    font-family: var(--secondary-font);
-    letter-spacing: 1.5px;
-    font-weight: 500;
-  }
-  .mapsection .mapwrapper .locationwrapper .locationlist ul li .location-1 .locationdetail p {
-    font-size: 15px;
-    letter-spacing: 1px;
-    font-family: var(--secondary-font);
-    font-weight: 500;
-  }
-  .mapsection .mapwrapper .locationwrapper .locationlist ul li .location-1 .locationdetail span {
-    font-size: 14px;
-    font-family: var(--secondary-font);
-    color: #0B5E1E;
-    font-weight: 500;
-  }
-  .mapsection .mapwrapper .locationwrapper .locationlist ul li .location-1 .locationdetail h5 {
-    font-size: 16px;
-    letter-spacing: 1px;
-    font-weight: 400;
-    font-family: var(--secondary-font);
-  }
-  .mapsection .mapwrapper .locationwrapper .locationlist ul li .location-1 .orderbtn {
-    border: 1px solid var(--primary-color);
-    padding: 6px 11px;
-    border-radius: 25px;
-    cursor: pointer;
-    transition: all 0.3s;
-  }
-  .mapsection .mapwrapper .locationwrapper .locationlist ul li .location-1 .orderbtn span {
-    font-size: 14px;
-    font-family: var(--secondary-font);
-    color: var(--primary-color);
-    font-weight: 500;
-    letter-spacing: 1.5px;
-  }
-  .mapsection .mapwrapper .locationwrapper .locationlist ul li .location-1 .orderbtn:hover {
-    background-color: var(--primary-color);
-  }
-  .mapsection .mapwrapper .locationwrapper .locationlist ul li .location-1 .orderbtn:hover span {
-    color: #fff;
-  }
-  .mapsection .mapwrapper .locationwrapper .locationlist ul li::after {
-    background-color: #c3c3c3;
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    content: "";
+  .mapsection .mapwrapper .allmap #map .leaflet-control-container .leaflet-top {
     width: 100%;
-    height: 1px;
+    justify-content: center;
   }
-  .mapsection .mapwrapper .locationwrapper .locationlist ul li.active {
-    background-color: rgba(217, 106, 26, 0.0666666667);
+  .mapsection .mapwrapper .allmap #map .leaflet-control-container .leaflet-top .leaflet-bar {
+    width: 100%;
+    justify-content: center;
   }
-  .mapsection .mapwrapper .allmap {
-    flex: 4;
-    position: relative;
-    z-index: 1;
+  .mapsection .mapwrapper .allmap #map .leaflet-control-container .leaflet-top .leaflet-bar input {
+    width: 50%;
   }
-  .mapsection .mapwrapper .allmap .leaflet-container {
-    height: 100% !important;
-  }
-  .mapsection .mapwrapper .allmap .leaflet-container .leaflet-control-container .leaflet-top:nth-child(2) {
-    right: 50% !important;
-    top: 20px !important;
-    transform: translate(50%, 0);
-  }
-  .mapsection .mapwrapper .allmap .leaflet-container .leaflet-control-container .leaflet-top:nth-child(2) .leaflet-bar {
+  .mapsection .mapwrapper .allmap #map .leaflet-control-container .leaflet-top .leaflet-control-zoom {
     border: none;
-    display: flex;
-    align-items: center;
-    gap: 10px;
   }
-  .mapsection .mapwrapper .allmap .search-btn {
-    display: flex;
-    gap: 20px;
-    position: absolute;
-    left: 50%;
-    top: 16px;
-    transform: translate(-50%, 0);
-    display: flex;
-    align-items: center;
-    z-index: 999;
+  .mapsection .mapwrapper .allmap #map .leaflet-control-container .leaflet-top .leaflet-control-zoom .leaflet-control-zoom-in, .mapsection .mapwrapper .allmap #map .leaflet-control-container .leaflet-top .leaflet-control-zoom .leaflet-control-zoom-out {
+    transform: translate(50%, 734%) !important;
   }
-  .mapsection .mapwrapper .allmap .search-btn input {
-    width: 248px;
-    justify-content: space-between;
-    display: flex;
-    padding: 8px 28px;
-    background-color: #fff;
-    border-radius: 25px;
-    border: 1px solid transparent;
-    align-items: center;
-    border: none;
-    font-family: var(--secondary-font);
-    letter-spacing: 1px;
-    font-size: 15px;
-    color: #4e4e4e;
-    border: 1px solid var(--primary-color);
-  }
-  .mapsection .mapwrapper .allmap .search-btn input:focus {
-    outline: none;
-  }
-  .mapsection .mapwrapper .allmap .search-btn button {
-    background-color: #fff;
-    border: 1px solid var(--primary-color);
-    color: var(--primary-color);
-    font-weight: 600;
-    padding: 8px 24px;
-    border-radius: 36px;
-    font-size: 15px;
-    letter-spacing: 1px;
-    font-family: var(--secondary-font);
-    transition: all 0.3s;
-    cursor: pointer;
-  }
-  .mapsection .mapwrapper .allmap .search-btn button:hover {
-    background: var(--primary-color);
-    color: #fff;
-    border: 1px solid transparent;
-  }
-  
-  @media only screen and (max-width: 1000px) {
-    .mapsection .mapwrapper {
-      flex-direction: column-reverse;
-    }
-    .locationlist {
-      height: 40vh !important;
-    }
-    .mapsection .mapwrapper .locationwrapper .locationlist li {
-      margin: 0 !important;
-    }
-    .mapsection .mapwrapper .allmap #map {
-      height: 300px !important;
-    }
-    .mapsection .mapwrapper .allmap #map .leaflet-control-container .leaflet-top {
-      width: 100%;
-      justify-content: center;
-    }
-    .mapsection .mapwrapper .allmap #map .leaflet-control-container .leaflet-top .leaflet-bar {
-      width: 100%;
-      justify-content: center;
-    }
-    .mapsection .mapwrapper .allmap #map .leaflet-control-container .leaflet-top .leaflet-bar input {
-      width: 50%;
-    }
-    .mapsection .mapwrapper .allmap #map .leaflet-control-container .leaflet-top .leaflet-control-zoom {
-      border: none;
-    }
-    .mapsection .mapwrapper .allmap #map .leaflet-control-container .leaflet-top .leaflet-control-zoom .leaflet-control-zoom-in, .mapsection .mapwrapper .allmap #map .leaflet-control-container .leaflet-top .leaflet-control-zoom .leaflet-control-zoom-out {
-      transform: translate(50%, 734%) !important;
-    }
-  }/*# sourceMappingURL=style.css.map */
+}/*# sourceMappingURL=style.css.map */

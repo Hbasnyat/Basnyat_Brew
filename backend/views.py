@@ -20,7 +20,7 @@ from django.db import IntegrityError
 from django.core.mail import send_mail
 from django.template.loader import render_to_string
 from django.utils.html import strip_tags
-
+from decimal import Decimal
 
 from django.db.models import F
 
@@ -250,47 +250,63 @@ def cart(request):
     cart_items = cart.cartitem_set.all().select_related('product')
     
     for item in cart_items:
-        if item.quantity > 1:
-            extra_drinks = item.quantity // 5
-            print("Extra drinks: ", extra_drinks)
-            item.total_quantity = (item.product.dollarprice * (item.quantity-extra_drinks)) 
-            print("Total quantity: ", item.total_quantity)
+        # Determine the cup size multiplier based on the cup size
+        
+        if item.cup_size == "Thulo(L)":
+            cup_multiplier = 3
+          
+        elif item.cup_size == "Thikkako(M)":
+            cup_multiplier = 2
+        elif item.cup_size == "Sano(S)":
+            cup_multiplier = 1
         else:
-            item.total_quantity = item.product.dollarprice * item.quantity
-    
+            print("Cup size not recognized")
+            cup_multiplier = 1
+           
+
+        # Calculate the total price for each item with cup size adjustment
+        if item.quantity > 0:
+            extra_drinks = item.quantity // 5
+            item.total_quantity = (item.product.dollarprice * cup_multiplier * (item.quantity - extra_drinks)) 
+      
     total_price = sum(item.total_quantity for item in cart_items)
     
     location = cart.location
     
-    return render(request, 'cart/index.html', {'cart_items': cart_items, 'total_price': total_price, 'location': location})
-
+    return render(request, 'cart/index.html', {'cart_items': cart_items, 'total_price': total_price, 'location': location, 'Decimal': Decimal})
 def create_checkout_session(request):
     try:
         cart_items = CartItem.objects.filter(cart__user=request.user).select_related('product')
 
         line_items = []
 
-        # Create line items with adjusted quantities
+        # Create line items with adjusted prices based on cup size and decreased quantity if it exceeds 6
         for item in cart_items:
-            # Decrease quantity if it exceeds 6
+            # Apply logic to decrease quantity if it exceeds 6
             if item.quantity >= 1:
-                quantity =item.quantity-item.quantity//5
-                  # Set the quantity to 6
+                quantity = item.quantity - item.quantity // 5
             else:
                 quantity = item.quantity  # Keep the original quantity
             
-            
+            # Adjust price based on cup size
+            if item.cup_size == 'Sano(S)':
+                price_multiplier = 1
+            elif item.cup_size == 'Thulo(L)':
+                price_multiplier = 3
+            elif item.cup_size == 'Thikkako(M)':
+                price_multiplier = 2
+            else:
+                price_multiplier = 1  # Default to 1 if cup size is not recognized
+
             line_item = {
                 'price_data': {
                     'currency': 'usd',
                     'product_data': {
                         'name': item.product.name,
                     },
-                    'unit_amount': int(item.product.dollarprice * 100),
+                    'unit_amount': int(item.product.dollarprice * price_multiplier * 100),  # Adjusted price
                 },
-                'quantity': quantity,
-                
-                
+                'quantity': quantity,  # Updated quantity
             }
             line_items.append(line_item)
 
@@ -327,13 +343,28 @@ def payment_success(request):
         status = 'Completed'
         order = Order.objects.create(user=user, status=status, cart=cart, date_ordered=order_date)
 
-        # Create order items for each cart item
+        # Process each cart item
         for cart_item in cart_items:
+            # Calculate extra drinks
             extra_drinks = cart_item.quantity // 5
-            print("Extra drinks: ", extra_drinks)
-            total_amount = cart_item.product.dollarprice * (cart_item.quantity-extra_drinks)
+            
+            # Determine the cup size multiplier
+            if cart_item.cup_size == 'Sano(S)':
+                cup_multiplier = 1
+            elif cart_item.cup_size == 'Thulo(L)':
+                cup_multiplier = 3
+            elif cart_item.cup_size == 'Thikkako(M)':
+                cup_multiplier = 2
+            else:
+                cup_multiplier = 1  # Default to 1 if cup size is not recognized
+            
             # Calculate the total quantity including the free extra drinks
             total_quantity = cart_item.quantity 
+            
+            # Calculate the total amount based on cup size multiplier and extra drinks
+            total_amount = (cart_item.product.dollarprice * cup_multiplier * 
+                            (cart_item.quantity - extra_drinks))
+            
             # Create the order item
             OrderItem.objects.create(
                 order=order,
@@ -344,7 +375,7 @@ def payment_success(request):
                 sweetener=cart_item.sweetener,
                 cup_size=cart_item.cup_size,
                 location=cart_item.product.locations.first(),  # Assuming product can have multiple locations, taking the first one
-                total_amount=total_amount  # Save the total amount for the order item
+                total_amount=total_amount
             )
 
         # Delete the cart items after successfully creating the order and order items
@@ -357,11 +388,11 @@ def payment_success(request):
         subject = 'Order Confirmation'
         html_message = render_to_string('email/order_confirmation.html', {'order': order})
         plain_message = strip_tags(html_message)
-        from_email = ' basnyatbrewhub@gmail.com'  # Update with your email
+        from_email = 'basnyatbrewhub@gmail.com'  # Update with your email
         to_email = [user.email]
         send_mail(subject, plain_message, from_email, to_email, html_message=html_message)
         messages.success(request, 'Your order has been placed successfully!')
-        return redirect('home');
+        return redirect('home')
 
     except Cart.DoesNotExist:
         messages.error(request, "Cart does not exist for the user.")
@@ -369,6 +400,15 @@ def payment_success(request):
     except stripe.error.StripeError as e:
         messages.error(request, f"An error occurred: {e}")
         return redirect('cart')
+
+
+    except Cart.DoesNotExist:
+        messages.error(request, "Cart does not exist for the user.")
+        return redirect('cart')
+    except stripe.error.StripeError as e:
+        messages.error(request, f"An error occurred: {e}")
+        return redirect('cart')
+
 def update_cart_item(request, cart_item_id):
     cart_item = get_object_or_404(CartItem, id=cart_item_id)
     
